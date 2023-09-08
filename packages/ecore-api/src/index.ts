@@ -2,6 +2,8 @@ export * from './EAnnotation';
 export * from './EAttribute';
 export * from './EClass';
 export * from './EClassifier';
+export * from './EcoreFactory';
+export * from './EcorePackage';
 export * from './EDataType';
 export * from './EEnum';
 export * from './EEnumLiteral';
