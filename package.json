@@ -1,0 +1,23 @@
+{
+  "name": "@ecore-ts/monorepo",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Ecore meta-modeling support for TypeScript",
+  "type": "module",
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "scripts": {
+    "format": "prettier --config .prettierrc \"packages/*/src/**/*.{js,ts,tsx}\" --write"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/noherczeg/ecore-ts.git"
+  },
+  "keywords": [],
+  "author": "Norbert Csaba Herczeg<noherczeg@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "prettier": "^3.0.3"
+  }
+}

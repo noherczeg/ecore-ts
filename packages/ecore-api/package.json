@@ -1,0 +1,31 @@
+{
+  "name": "@ecore-ts/ecore-api",
+  "private": true,
+  "version": "0.1.0",
+  "description": "",
+  "type": "module",
+  "module": "dist/ecore-api.mjs",
+  "types": "dist/ecore-api.d.ts",
+  "exports": {
+    ".": {
+      "default": "./dist/ecore-api.mjs"
+    }
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "scripts": {
+    "build": "rollup -c"
+  },
+  "keywords": [],
+  "author": "bert Csaba Herczeg<noherczeg@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "esbuild": "^0.19.2",
+    "rollup": "^3.29.0",
+    "rollup-plugin-clear": "^2.0.7",
+    "rollup-plugin-dts": "^6.0.1",
+    "rollup-plugin-esbuild": "^5.0.0",
+    "tslib": "^2.6.2"
+  }
+}

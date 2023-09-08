@@ -1,0 +1,42 @@
+import { EClassifier } from './EClassifier';
+import { EOperation } from './EOperation';
+import { EStructuralFeature } from './EStructuralFeature';
+import { EReference } from './EReference';
+import { EAttribute } from './EAttribute';
+import { EGenericType } from './EGenericType';
+
+export interface EClass extends EClassifier {
+  abstract: boolean;
+  interface: boolean;
+  getEAllOperations(): EOperation[];
+  getEOperations(): EOperation[];
+  getEOperation(operationID: number): EOperation | undefined;
+  getEAllStructuredFeatures(): EStructuralFeature[];
+  getEStructuredFeatures(): EStructuralFeature[];
+  getEStructuredFeature(featureID: number): EStructuralFeature | undefined;
+  getEStructuredFeature(featureName: string): EStructuralFeature | undefined;
+  getEAllContainments(): EReference[];
+  getEAllReferences(): EReference[];
+  getEReferences(): EReference[];
+  getEAllAttributes(): EAttribute[];
+  getEAttributes(): EAttribute[];
+  getEIDAttribute(): EAttribute | undefined;
+  getESuperTypes(): EClass[];
+  getEAllSuperTypes(): EClass[];
+  getEAllGenericSuperTypes(): EGenericType[];
+  getEGenericSuperTypes(): EGenericType[];
+  isSuperTypeOf(someClass: EClass): boolean;
+  getEStructuralFeature(featureID: number): EStructuralFeature;
+  getEStructuralFeature(featureName: string): EStructuralFeature;
+  getFeatureCount(): number;
+  getFeatureID(feature: EStructuralFeature): number;
+  getFeatureType(feature: EStructuralFeature): EGenericType;
+  getOperationCount(): number;
+  getOperationID(operation: EOperation): number;
+  getOverride(operation: EOperation): EOperation;
+  isAbstract(): boolean;
+  isInterface(): boolean;
+  isSuperTypeOf(someClass: EClass): boolean;
+  setAbstract(value: boolean): void;
+  setInterface(value: boolean): void;
+}
