@@ -1,0 +1,3574 @@
+{
+  "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EPackage",
+  "name" : "ui",
+  "nsURI" : "http://blackbelt.hu/judo/meta/ui",
+  "nsPrefix" : "ui",
+  "eClassifiers" : [ {
+    "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+    "name" : "NamedElement",
+    "abstract" : true,
+    "eOperations" : [ {
+      "name" : "getSeparator",
+      "lowerBound" : 1,
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+        "$ref" : "http://www.eclipse.org/emf/2003/XMLType#//String"
+      }
+    }, {
+      "name" : "getFQName",
+      "lowerBound" : 1,
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+        "$ref" : "http://www.eclipse.org/emf/2003/XMLType#//String"
+      }
+    }, {
+      "name" : "getOwner",
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+        "$ref" : "//NamedElement"
+      }
+    } ],
+    "eStructuralFeatures" : [ {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EAttribute",
+      "name" : "name",
+      "lowerBound" : 1,
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+        "$ref" : "http://www.eclipse.org/emf/2003/XMLType#//String"
+      }
+    }, {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EAttribute",
+      "name" : "sourceId",
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+        "$ref" : "http://www.eclipse.org/emf/2002/Ecore#//EString"
+      }
+    } ]
+  }, {
+    "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+    "name" : "Container",
+    "eSuperTypes" : [ {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+      "$ref" : "//VisualElement"
+    } ],
+    "eStructuralFeatures" : [ {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EReference",
+      "name" : "children",
+      "upperBound" : -1,
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+        "$ref" : "//VisualElement"
+      },
+      "containment" : true
+    } ]
+  }, {
+    "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EEnum",
+    "name" : "CrossAxisAlignment",
+    "eLiterals" : [ {
+      "name" : "BASELINE"
+    }, {
+      "name" : "CENTER",
+      "value" : 1
+    }, {
+      "name" : "END",
+      "value" : 2
+    }, {
+      "name" : "START",
+      "value" : 3
+    }, {
+      "name" : "STRETCH",
+      "value" : 4
+    } ]
+  }, {
+    "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EEnum",
+    "name" : "MainAxisAlignment",
+    "eLiterals" : [ {
+      "name" : "CENTER"
+    }, {
+      "name" : "END",
+      "value" : 1
+    }, {
+      "name" : "SPACEAROUND",
+      "value" : 2
+    }, {
+      "name" : "SPACEBETWEEN",
+      "value" : 3
+    }, {
+      "name" : "SPACEEVENLY",
+      "value" : 4
+    }, {
+      "name" : "START",
+      "value" : 5
+    } ]
+  }, {
+    "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+    "eAnnotations" : [ {
+      "source" : "http://www.eclipse.org/emf/2002/GenModel",
+      "details" : {
+        "documentation" : "Layout for a Flex proceeds in six steps:\n\nLayout each child a null or zero flex factor (e.g., those that are not Expanded) with unbounded main axis constraints and the incoming cross axis constraints. If the crossAxisAlignment is CrossAxisAlignment.stretch, instead use tight cross axis constraints that match the incoming max extent in the cross axis.\nDivide the remaining main axis space among the children with non-zero flex factors (e.g., those that are Expanded) according to their flex factor. For example, a child with a flex factor of 2.0 will receive twice the amount of main axis space as a child with a flex factor of 1.0.\nLayout each of the remaining children with the same cross axis constraints as in step 1, but instead of using unbounded main axis constraints, use max axis constraints based on the amount of space allocated in step 2. Children with Flexible.fit properties that are FlexFit.tight are given tight constraints (i.e., forced to fill the allocated space), and children with Flexible.fit properties that are FlexFit.loose are given loose constraints (i.e., not forced to fill the allocated space).\nThe cross axis extent of the Flex is the maximum cross axis extent of the children (which will always satisfy the incoming constraints).\nThe main axis extent of the Flex is determined by the mainAxisSize property. If the mainAxisSize property is MainAxisSize.max, then the main axis extent of the Flex is the max extent of the incoming main axis constraints. If the mainAxisSize property is MainAxisSize.min, then the main axis extent of the Flex is the sum of the main axis extents of the children (subject to the incoming constraints).\nDetermine the position for each child according to the mainAxisAlignment and the crossAxisAlignment. For example, if the mainAxisAlignment is MainAxisAlignment.spaceBetween, any main axis space that has not been allocated to children is divided evenly and placed between the children.\n"
+      }
+    } ],
+    "name" : "Flex",
+    "eSuperTypes" : [ {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+      "$ref" : "//Container"
+    } ],
+    "eOperations" : [ {
+      "name" : "getIsDirectionHorizontal",
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+        "$ref" : "http://www.eclipse.org/emf/2003/XMLType#//Boolean"
+      }
+    }, {
+      "name" : "getIsDirectionVertical",
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+        "$ref" : "http://www.eclipse.org/emf/2003/XMLType#//Boolean"
+      }
+    }, {
+      "name" : "getIsMainAxisSizeMin",
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+        "$ref" : "http://www.eclipse.org/emf/2003/XMLType#//Boolean"
+      }
+    }, {
+      "name" : "getIsMainAxisSizeMax",
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+        "$ref" : "http://www.eclipse.org/emf/2003/XMLType#//Boolean"
+      }
+    }, {
+      "name" : "getIsMainAxisAlignmentCenter",
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+        "$ref" : "http://www.eclipse.org/emf/2003/XMLType#//Boolean"
+      }
+    }, {
+      "name" : "getIsMainAxisAlignmentEnd",
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+        "$ref" : "http://www.eclipse.org/emf/2003/XMLType#//Boolean"
+      }
+    }, {
+      "name" : "getIsMainAxisAlignmentSpaceAround",
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+        "$ref" : "http://www.eclipse.org/emf/2003/XMLType#//Boolean"
+      }
+    }, {
+      "name" : "getIsMainAxisAlignmentSpaceBetween",
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+        "$ref" : "http://www.eclipse.org/emf/2003/XMLType#//Boolean"
+      }
+    }, {
+      "name" : "getIsMainAxisAlignmentSpaceEvenly",
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+        "$ref" : "http://www.eclipse.org/emf/2003/XMLType#//Boolean"
+      }
+    }, {
+      "name" : "getIsMainAxisAlignmentStart",
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+        "$ref" : "http://www.eclipse.org/emf/2003/XMLType#//Boolean"
+      }
+    }, {
+      "name" : "getIsCrossAxisAlignmentBaseline",
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+        "$ref" : "http://www.eclipse.org/emf/2003/XMLType#//Boolean"
+      }
+    }, {
+      "name" : "getIsCrossAxisAlignmentCenter",
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+        "$ref" : "http://www.eclipse.org/emf/2003/XMLType#//Boolean"
+      }
+    }, {
+      "name" : "getIsCrossAxisAlignmentEnd",
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+        "$ref" : "http://www.eclipse.org/emf/2003/XMLType#//Boolean"
+      }
+    }, {
+      "name" : "getIsCrossAxisAlignmentStart",
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+        "$ref" : "http://www.eclipse.org/emf/2003/XMLType#//Boolean"
+      }
+    }, {
+      "name" : "getIsCrossAxisAlignmentStretch",
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+        "$ref" : "http://www.eclipse.org/emf/2003/XMLType#//Boolean"
+      }
+    }, {
+      "name" : "isCard",
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+        "$ref" : "http://www.eclipse.org/emf/2003/XMLType#//Boolean"
+      }
+    } ],
+    "eStructuralFeatures" : [ {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EAttribute",
+      "name" : "direction",
+      "lowerBound" : 1,
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EEnum",
+        "$ref" : "//Axis"
+      }
+    }, {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EAttribute",
+      "name" : "mainAxisAlignment",
+      "lowerBound" : 1,
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EEnum",
+        "$ref" : "//MainAxisAlignment"
+      }
+    }, {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EAttribute",
+      "name" : "crossAxisAlignment",
+      "lowerBound" : 1,
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EEnum",
+        "$ref" : "//CrossAxisAlignment"
+      },
+      "defaultValueLiteral" : "START"
+    }, {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EAttribute",
+      "name" : "mainAxisSize",
+      "lowerBound" : 1,
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EEnum",
+        "$ref" : "//MainAxisSize"
+      }
+    }, {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EReference",
+      "name" : "dataElement",
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+        "$ref" : "//data/DataElement"
+      }
+    }, {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EReference",
+      "name" : "frame",
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+        "$ref" : "//Frame"
+      },
+      "containment" : true
+    } ]
+  }, {
+    "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EEnum",
+    "name" : "Axis",
+    "eLiterals" : [ {
+      "name" : "HORIZONTAL"
+    }, {
+      "name" : "VERTICAL",
+      "value" : 1
+    } ]
+  }, {
+    "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EEnum",
+    "eAnnotations" : [ {
+      "source" : "http://www.eclipse.org/emf/2002/GenModel",
+      "details" : {
+        "documentation" : "How much space should be occupied in the main axis.\n\nDuring a flex layout, available space along the main axis is allocated to children. After allocating space, there might be some remaining free space. This value controls whether to maximize or minimize the amount of free space, subject to the incoming layout constraints."
+      }
+    } ],
+    "name" : "MainAxisSize",
+    "eLiterals" : [ {
+      "name" : "MIN"
+    }, {
+      "name" : "MAX",
+      "value" : 1
+    } ]
+  }, {
+    "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+    "name" : "Spacer",
+    "eSuperTypes" : [ {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+      "$ref" : "//VisualElement"
+    } ]
+  }, {
+    "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EEnum",
+    "eAnnotations" : [ {
+      "source" : "http://www.eclipse.org/emf/2002/GenModel",
+      "details" : {
+        "documentation" : "How the child is inscribed into the available space."
+      }
+    } ],
+    "name" : "Fit",
+    "eLiterals" : [ {
+      "eAnnotations" : [ {
+        "source" : "http://www.eclipse.org/emf/2002/GenModel",
+        "details" : {
+          "documentation" : "The child can be at most as large as the available space (but is allowed to be smaller).\n\nThe Flexible widget assigns this kind of FlexFit to its child."
+        }
+      } ],
+      "name" : "LOOSE",
+      "value" : 1
+    }, {
+      "eAnnotations" : [ {
+        "source" : "http://www.eclipse.org/emf/2002/GenModel",
+        "details" : {
+          "documentation" : "The child is forced to fill the available space.\n\nThe Expanded widget assigns this kind of FlexFit to its child."
+        }
+      } ],
+      "name" : "TIGHT",
+      "value" : 2
+    }, {
+      "name" : "NONE"
+    } ]
+  }, {
+    "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+    "name" : "List",
+    "eSuperTypes" : [ {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+      "$ref" : "//Container"
+    } ]
+  }, {
+    "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+    "name" : "Size",
+    "eStructuralFeatures" : [ {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EAttribute",
+      "name" : "width",
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+        "$ref" : "http://www.eclipse.org/emf/2003/XMLType#//Int"
+      },
+      "defaultValueLiteral" : "-1"
+    }, {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EAttribute",
+      "name" : "height",
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+        "$ref" : "http://www.eclipse.org/emf/2003/XMLType#//Int"
+      },
+      "defaultValueLiteral" : "-1"
+    } ]
+  }, {
+    "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+    "name" : "VisualElement",
+    "eSuperTypes" : [ {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+      "$ref" : "//NamedElement"
+    }, {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+      "$ref" : "//LabeledElement"
+    } ],
+    "eOperations" : [ {
+      "name" : "getPageDefinition",
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+        "$ref" : "//PageDefinition"
+      }
+    }, {
+      "name" : "getPageContainer",
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+        "$ref" : "//PageContainer"
+      }
+    }, {
+      "name" : "isHorizontalGrow",
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+        "$ref" : "http://www.eclipse.org/emf/2003/XMLType#//Boolean"
+      }
+    }, {
+      "name" : "isVerticalGrow",
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+        "$ref" : "http://www.eclipse.org/emf/2003/XMLType#//Boolean"
+      }
+    }, {
+      "name" : "getIsFitTight",
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+        "$ref" : "http://www.eclipse.org/emf/2003/XMLType#//Boolean"
+      }
+    } ],
+    "eStructuralFeatures" : [ {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EReference",
+      "name" : "size",
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+        "$ref" : "//Size"
+      },
+      "containment" : true
+    }, {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EReference",
+      "name" : "sizeconstraint",
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+        "$ref" : "//SizeConstraint"
+      },
+      "containment" : true
+    }, {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EReference",
+      "name" : "align",
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+        "$ref" : "//Align"
+      },
+      "containment" : true
+    }, {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EAttribute",
+      "name" : "fit",
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EEnum",
+        "$ref" : "//Fit"
+      },
+      "defaultValueLiteral" : "NONE"
+    }, {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EAttribute",
+      "name" : "col",
+      "lowerBound" : 1,
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+        "$ref" : "http://www.eclipse.org/emf/2003/XMLType#//Double"
+      },
+      "defaultValueLiteral" : "4"
+    }, {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EAttribute",
+      "name" : "row",
+      "lowerBound" : 1,
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+        "$ref" : "http://www.eclipse.org/emf/2003/XMLType#//Double"
+      },
+      "defaultValueLiteral" : "1"
+    }, {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EAttribute",
+      "name" : "disabled",
+      "lowerBound" : 1,
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+        "$ref" : "http://www.eclipse.org/emf/2003/XMLType#//Boolean"
+      },
+      "defaultValueLiteral" : "false"
+    }, {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EAttribute",
+      "name" : "stretch",
+      "lowerBound" : 1,
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EEnum",
+        "$ref" : "//Stretch"
+      },
+      "defaultValueLiteral" : "NONE"
+    }, {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EAttribute",
+      "name" : "isInCard",
+      "lowerBound" : 1,
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+        "$ref" : "http://www.eclipse.org/emf/2003/XMLType#//Boolean"
+      },
+      "defaultValueLiteral" : "false"
+    }, {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EAttribute",
+      "name" : "isReadOnly",
+      "lowerBound" : 1,
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+        "$ref" : "http://www.eclipse.org/emf/2003/XMLType#//Boolean"
+      },
+      "defaultValueLiteral" : "false"
+    }, {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EAttribute",
+      "name" : "order",
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+        "$ref" : "http://www.eclipse.org/emf/2003/XMLType#//Int"
+      }
+    }, {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EReference",
+      "name" : "hiddenBy",
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+        "$ref" : "//data/AttributeType"
+      }
+    }, {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EReference",
+      "name" : "enabledBy",
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+        "$ref" : "//data/AttributeType"
+      }
+    }, {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EAttribute",
+      "name" : "customImplementation",
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+        "$ref" : "http://www.eclipse.org/emf/2003/XMLType#//Boolean"
+      }
+    }, {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EReference",
+      "name" : "requiredBy",
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+        "$ref" : "//data/AttributeType"
+      }
+    }, {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EAttribute",
+      "name" : "onBlur",
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+        "$ref" : "http://www.eclipse.org/emf/2003/XMLType#//BooleanObject"
+      }
+    } ]
+  }, {
+    "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+    "name" : "Icon",
+    "eSuperTypes" : [ {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+      "$ref" : "//NamedElement"
+    } ]
+  }, {
+    "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+    "name" : "TabController",
+    "eSuperTypes" : [ {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+      "$ref" : "//VisualElement"
+    } ],
+    "eStructuralFeatures" : [ {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EReference",
+      "name" : "tabs",
+      "lowerBound" : 1,
+      "upperBound" : -1,
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+        "$ref" : "//Tab"
+      },
+      "containment" : true
+    }, {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EAttribute",
+      "name" : "controllerRow",
+      "lowerBound" : 1,
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+        "$ref" : "http://www.eclipse.org/emf/2003/XMLType#//Int"
+      },
+      "defaultValueLiteral" : "1"
+    }, {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EAttribute",
+      "name" : "orientation",
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EEnum",
+        "$ref" : "//TabOrientation"
+      }
+    } ]
+  }, {
+    "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+    "name" : "Tab",
+    "eSuperTypes" : [ {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+      "$ref" : "//NamedElement"
+    } ],
+    "eStructuralFeatures" : [ {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EReference",
+      "name" : "element",
+      "lowerBound" : 1,
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+        "$ref" : "//VisualElement"
+      },
+      "containment" : true
+    } ]
+  }, {
+    "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+    "name" : "SizeConstraint",
+    "eStructuralFeatures" : [ {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EAttribute",
+      "name" : "minWidth",
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+        "$ref" : "http://www.eclipse.org/emf/2003/XMLType#//Int"
+      },
+      "defaultValueLiteral" : "-1"
+    }, {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EAttribute",
+      "name" : "minHeight",
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+        "$ref" : "http://www.eclipse.org/emf/2003/XMLType#//Int"
+      },
+      "defaultValueLiteral" : "-1"
+    }, {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EAttribute",
+      "name" : "maxWidth",
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+        "$ref" : "http://www.eclipse.org/emf/2003/XMLType#//Int"
+      },
+      "defaultValueLiteral" : "-1"
+    }, {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EAttribute",
+      "name" : "maxHeight",
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+        "$ref" : "http://www.eclipse.org/emf/2003/XMLType#//Int"
+      },
+      "defaultValueLiteral" : "-1"
+    } ]
+  }, {
+    "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+    "name" : "Align",
+    "eStructuralFeatures" : [ {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EAttribute",
+      "name" : "alignment",
+      "lowerBound" : 1,
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EEnum",
+        "$ref" : "//Alignment"
+      }
+    } ]
+  }, {
+    "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EEnum",
+    "name" : "Alignment",
+    "eLiterals" : [ {
+      "name" : "TOP_LEFT"
+    }, {
+      "name" : "TOP_CENTER",
+      "value" : 1
+    }, {
+      "name" : "TOP_RIGHT",
+      "value" : 2
+    }, {
+      "name" : "CENTER_LEFT",
+      "value" : 3
+    }, {
+      "name" : "CENTER",
+      "value" : 4
+    }, {
+      "name" : "CENTER_RIGHT",
+      "value" : 5
+    }, {
+      "name" : "BOTTOM_LEFT",
+      "value" : 6
+    }, {
+      "name" : "BOTTOM_CENTER",
+      "value" : 7
+    }, {
+      "name" : "BOTTOM_RIGHT",
+      "value" : 8
+    } ]
+  }, {
+    "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+    "name" : "Table",
+    "eSuperTypes" : [ {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+      "$ref" : "//VisualElement"
+    }, {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+      "$ref" : "//ReferenceTypedVisualElement"
+    } ],
+    "eOperations" : [ {
+      "name" : "getFormattedMask",
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+        "$ref" : "http://www.eclipse.org/emf/2003/XMLType#//String"
+      }
+    }, {
+      "name" : "getDefaultSortColumn",
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+        "$ref" : "//Column"
+      }
+    }, {
+      "name" : "getFormattedMaskForRange",
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+        "$ref" : "http://www.eclipse.org/emf/2003/XMLType#//String"
+      }
+    } ],
+    "eStructuralFeatures" : [ {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EReference",
+      "name" : "detail",
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+        "$ref" : "//PageDefinition"
+      }
+    }, {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EReference",
+      "name" : "columns",
+      "lowerBound" : 1,
+      "upperBound" : -1,
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+        "$ref" : "//Column"
+      },
+      "containment" : true
+    }, {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EReference",
+      "name" : "rowActions",
+      "upperBound" : -1,
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+        "$ref" : "//Action"
+      }
+    }, {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EReference",
+      "name" : "actions",
+      "upperBound" : -1,
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+        "$ref" : "//Action"
+      }
+    }, {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EReference",
+      "name" : "filters",
+      "upperBound" : -1,
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+        "$ref" : "//Filter"
+      },
+      "containment" : true
+    }, {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EAttribute",
+      "name" : "shownRowActions",
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+        "$ref" : "http://www.eclipse.org/emf/2003/XMLType#//Int"
+      },
+      "defaultValueLiteral" : "1"
+    }, {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EAttribute",
+      "name" : "isSmallTable",
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+        "$ref" : "http://www.eclipse.org/emf/2003/XMLType#//Boolean"
+      },
+      "defaultValueLiteral" : "false"
+    }, {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EAttribute",
+      "name" : "rowsPerPage",
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+        "$ref" : "http://www.eclipse.org/emf/2003/XMLType#//IntObject"
+      },
+      "defaultValueLiteral" : "10"
+    } ]
+  }, {
+    "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+    "name" : "Input",
+    "abstract" : true,
+    "eSuperTypes" : [ {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+      "$ref" : "//VisualElement"
+    } ],
+    "eStructuralFeatures" : [ {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EReference",
+      "name" : "attributeType",
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+        "$ref" : "//data/AttributeType"
+      }
+    } ]
+  }, {
+    "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+    "name" : "Text",
+    "eSuperTypes" : [ {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+      "$ref" : "//VisualElement"
+    } ],
+    "eStructuralFeatures" : [ {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EAttribute",
+      "name" : "text",
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+        "$ref" : "http://www.eclipse.org/emf/2003/XMLType#//String"
+      }
+    } ]
+  }, {
+    "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+    "name" : "Divider",
+    "eSuperTypes" : [ {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+      "$ref" : "//VisualElement"
+    } ]
+  }, {
+    "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+    "name" : "EnumerationRadio",
+    "eSuperTypes" : [ {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+      "$ref" : "//Input"
+    } ],
+    "eStructuralFeatures" : [ {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EReference",
+      "name" : "options",
+      "lowerBound" : 1,
+      "upperBound" : -1,
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+        "$ref" : "//Option"
+      },
+      "containment" : true
+    } ]
+  }, {
+    "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+    "name" : "Option",
+    "eSuperTypes" : [ {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+      "$ref" : "//NamedElement"
+    } ],
+    "eStructuralFeatures" : [ {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EAttribute",
+      "name" : "selected",
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+        "$ref" : "http://www.eclipse.org/emf/2003/XMLType#//Boolean"
+      },
+      "defaultValueLiteral" : "false"
+    }, {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EReference",
+      "name" : "enumerationMember",
+      "lowerBound" : 1,
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+        "$ref" : "//data/EnumerationMember"
+      }
+    } ]
+  }, {
+    "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+    "name" : "TextInput",
+    "eSuperTypes" : [ {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+      "$ref" : "//Input"
+    } ],
+    "eStructuralFeatures" : [ {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EAttribute",
+      "name" : "mask",
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+        "$ref" : "http://www.eclipse.org/emf/2003/XMLType#//String"
+      }
+    }, {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EAttribute",
+      "name" : "regexp",
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+        "$ref" : "http://www.eclipse.org/emf/2003/XMLType#//String"
+      }
+    }, {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EAttribute",
+      "name" : "maxLength",
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+        "$ref" : "http://www.eclipse.org/emf/2003/XMLType#//Int"
+      }
+    } ]
+  }, {
+    "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+    "name" : "TextArea",
+    "eSuperTypes" : [ {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+      "$ref" : "//Input"
+    } ],
+    "eStructuralFeatures" : [ {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EAttribute",
+      "name" : "maxLength",
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+        "$ref" : "http://www.eclipse.org/emf/2003/XMLType#//Int"
+      }
+    }, {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EAttribute",
+      "name" : "lines",
+      "lowerBound" : 1,
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+        "$ref" : "http://www.eclipse.org/emf/2003/XMLType#//Int"
+      },
+      "defaultValueLiteral" : "1"
+    } ]
+  }, {
+    "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+    "name" : "NumericInput",
+    "eSuperTypes" : [ {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+      "$ref" : "//Input"
+    } ]
+  }, {
+    "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+    "name" : "Checkbox",
+    "eSuperTypes" : [ {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+      "$ref" : "//Input"
+    } ],
+    "eStructuralFeatures" : [ {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EAttribute",
+      "name" : "checked",
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+        "$ref" : "http://www.eclipse.org/emf/2003/XMLType#//Boolean"
+      },
+      "defaultValueLiteral" : "false"
+    } ]
+  }, {
+    "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+    "name" : "Switch",
+    "eSuperTypes" : [ {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+      "$ref" : "//Input"
+    } ],
+    "eStructuralFeatures" : [ {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EAttribute",
+      "name" : "switched",
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+        "$ref" : "http://www.eclipse.org/emf/2003/XMLType#//Boolean"
+      }
+    } ]
+  }, {
+    "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+    "name" : "PageDefinition",
+    "eSuperTypes" : [ {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+      "$ref" : "//NamedElement"
+    }, {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+      "$ref" : "//ReferenceTypedVisualElement"
+    }, {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+      "$ref" : "//LabeledElement"
+    } ],
+    "eOperations" : [ {
+      "name" : "getIsPageTypeCreate",
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+        "$ref" : "http://www.eclipse.org/emf/2003/XMLType#//Boolean"
+      }
+    }, {
+      "name" : "getIsPageTypeView",
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+        "$ref" : "http://www.eclipse.org/emf/2003/XMLType#//Boolean"
+      }
+    }, {
+      "name" : "getIsPageTypeTable",
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+        "$ref" : "http://www.eclipse.org/emf/2003/XMLType#//Boolean"
+      }
+    }, {
+      "name" : "getIsPageTypeOperationInput",
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+        "$ref" : "http://www.eclipse.org/emf/2003/XMLType#//Boolean"
+      }
+    }, {
+      "name" : "getIsPageTypeOperationOutput",
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+        "$ref" : "http://www.eclipse.org/emf/2003/XMLType#//Boolean"
+      }
+    }, {
+      "name" : "getIsPageTypeDashboard",
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+        "$ref" : "http://www.eclipse.org/emf/2003/XMLType#//Boolean"
+      }
+    }, {
+      "name" : "getTables",
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+        "$ref" : "http://www.eclipse.org/emf/2002/Ecore#//EEList"
+      }
+    }, {
+      "name" : "getLinks",
+      "eGenericType" : {
+        "eTypeArguments" : [ { } ],
+        "eClassifier" : {
+          "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+          "$ref" : "http://www.eclipse.org/emf/2002/Ecore#//EEList"
+        }
+      }
+    }, {
+      "name" : "getButtons",
+      "eGenericType" : {
+        "eTypeArguments" : [ { } ],
+        "eClassifier" : {
+          "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+          "$ref" : "http://www.eclipse.org/emf/2002/Ecore#//EEList"
+        }
+      }
+    }, {
+      "name" : "getPageActions",
+      "eGenericType" : {
+        "eTypeArguments" : [ { } ],
+        "eClassifier" : {
+          "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+          "$ref" : "http://www.eclipse.org/emf/2002/Ecore#//EEList"
+        }
+      }
+    }, {
+      "name" : "getFormattedMask",
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+        "$ref" : "http://www.eclipse.org/emf/2003/XMLType#//String"
+      }
+    }, {
+      "name" : "getOriginalPageContainer",
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+        "$ref" : "//PageContainer"
+      }
+    }, {
+      "name" : "getGeneratedPageContainers",
+      "eGenericType" : {
+        "eTypeArguments" : [ { } ],
+        "eClassifier" : {
+          "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+          "$ref" : "http://www.eclipse.org/emf/2002/Ecore#//EEList"
+        }
+      }
+    } ],
+    "eStructuralFeatures" : [ {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EReference",
+      "name" : "containers",
+      "lowerBound" : 1,
+      "upperBound" : -1,
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+        "$ref" : "//PageContainer"
+      },
+      "containment" : true
+    }, {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EAttribute",
+      "name" : "pageType",
+      "lowerBound" : 1,
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EEnum",
+        "$ref" : "//PageType"
+      },
+      "defaultValueLiteral" : "VIEW"
+    }, {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EReference",
+      "name" : "actions",
+      "upperBound" : -1,
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+        "$ref" : "//Action"
+      },
+      "containment" : true
+    }, {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EReference",
+      "name" : "mask",
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+        "$ref" : "//Mask"
+      },
+      "containment" : true
+    }, {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EAttribute",
+      "name" : "titleFrom",
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EEnum",
+        "$ref" : "//TitleFrom"
+      }
+    }, {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EReference",
+      "name" : "titleAttribute",
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+        "$ref" : "//data/AttributeType"
+      }
+    }, {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EAttribute",
+      "name" : "openInDialog",
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+        "$ref" : "http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
+      }
+    }, {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EAttribute",
+      "name" : "dialogSize",
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EEnum",
+        "$ref" : "//DialogSize"
+      }
+    } ]
+  }, {
+    "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+    "name" : "Application",
+    "eSuperTypes" : [ {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+      "$ref" : "//NamedElement"
+    } ],
+    "eOperations" : [ {
+      "name" : "getTables",
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+        "$ref" : "http://www.eclipse.org/emf/2002/Ecore#//EEList"
+      }
+    }, {
+      "name" : "getRelationTypes",
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+        "$ref" : "http://www.eclipse.org/emf/2002/Ecore#//EEList"
+      }
+    }, {
+      "name" : "getPageContainers",
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+        "$ref" : "http://www.eclipse.org/emf/2002/Ecore#//EEList"
+      }
+    }, {
+      "name" : "getClassTypes",
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+        "$ref" : "http://www.eclipse.org/emf/2002/Ecore#//EEList"
+      }
+    }, {
+      "name" : "getDefaultLayoutType",
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+        "$ref" : "//LayoutType"
+      }
+    }, {
+      "name" : "getLinks",
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+        "$ref" : "http://www.eclipse.org/emf/2002/Ecore#//EEList"
+      }
+    }, {
+      "name" : "getAllLabels",
+      "upperBound" : -1,
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+        "$ref" : "http://www.eclipse.org/emf/2003/XMLType#//String"
+      }
+    } ],
+    "eStructuralFeatures" : [ {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EReference",
+      "name" : "navigationController",
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+        "$ref" : "//NavigationController"
+      },
+      "containment" : true
+    }, {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EReference",
+      "name" : "dashboard",
+      "lowerBound" : 1,
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+        "$ref" : "//PageDefinition"
+      }
+    }, {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EReference",
+      "name" : "pages",
+      "upperBound" : -1,
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+        "$ref" : "//PageDefinition"
+      },
+      "containment" : true
+    }, {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EReference",
+      "name" : "dataElements",
+      "upperBound" : -1,
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+        "$ref" : "//data/DataElement"
+      },
+      "containment" : true
+    }, {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EReference",
+      "name" : "dataTypes",
+      "upperBound" : -1,
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+        "$ref" : "//data/DataType"
+      },
+      "containment" : true
+    }, {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EReference",
+      "name" : "layoutTypes",
+      "lowerBound" : 1,
+      "upperBound" : -1,
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+        "$ref" : "//LayoutType"
+      },
+      "containment" : true
+    }, {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EReference",
+      "name" : "actor",
+      "lowerBound" : 1,
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+        "$ref" : "//data/ClassType"
+      }
+    }, {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EReference",
+      "name" : "principal",
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+        "$ref" : "//data/ClassType"
+      }
+    }, {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EReference",
+      "name" : "mimeTypes",
+      "upperBound" : -1,
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+        "$ref" : "//data/MimeType"
+      },
+      "containment" : true
+    }, {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EReference",
+      "name" : "authentication",
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+        "$ref" : "//Authentication"
+      }
+    }, {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EAttribute",
+      "name" : "version",
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+        "$ref" : "http://www.eclipse.org/emf/2002/Ecore#//EString"
+      },
+      "defaultValueLiteral" : "$MODEL_VERSION_PLACEHOLDER$"
+    }, {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EAttribute",
+      "name" : "defaultLanguage",
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+        "$ref" : "http://www.eclipse.org/emf/2003/XMLType#//String"
+      },
+      "defaultValueLiteral" : "en-US"
+    }, {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EAttribute",
+      "name" : "logo",
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+        "$ref" : "http://www.eclipse.org/emf/2003/XMLType#//String"
+      }
+    }, {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EReference",
+      "name" : "theme",
+      "lowerBound" : 1,
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+        "$ref" : "//Theme"
+      },
+      "containment" : true
+    } ]
+  }, {
+    "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+    "name" : "NavigationController",
+    "eSuperTypes" : [ {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+      "$ref" : "//NamedElement"
+    } ],
+    "eStructuralFeatures" : [ {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EReference",
+      "name" : "items",
+      "upperBound" : -1,
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+        "$ref" : "//NavigationItem"
+      },
+      "containment" : true
+    } ]
+  }, {
+    "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+    "name" : "NavigationItem",
+    "eSuperTypes" : [ {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+      "$ref" : "//NamedElement"
+    }, {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+      "$ref" : "//LabeledElement"
+    } ],
+    "eStructuralFeatures" : [ {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EReference",
+      "name" : "items",
+      "upperBound" : -1,
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+        "$ref" : "//NavigationItem"
+      },
+      "containment" : true
+    }, {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EReference",
+      "name" : "target",
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+        "$ref" : "//PageDefinition"
+      }
+    }, {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EAttribute",
+      "name" : "hiddenBy",
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+        "$ref" : "http://www.eclipse.org/emf/2003/XMLType#//String"
+      }
+    } ]
+  }, {
+    "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+    "name" : "PasswordInput",
+    "eSuperTypes" : [ {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+      "$ref" : "//Input"
+    } ],
+    "eStructuralFeatures" : [ {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EAttribute",
+      "name" : "maxLength",
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+        "$ref" : "http://www.eclipse.org/emf/2003/XMLType#//Int"
+      }
+    } ]
+  }, {
+    "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+    "name" : "DateInput",
+    "eSuperTypes" : [ {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+      "$ref" : "//Input"
+    } ]
+  }, {
+    "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+    "name" : "DateTimeInput",
+    "eSuperTypes" : [ {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+      "$ref" : "//Input"
+    } ],
+    "eStructuralFeatures" : [ {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EAttribute",
+      "name" : "baseUnit",
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EEnum",
+        "$ref" : "//DurationUnit"
+      },
+      "defaultValueLiteral" : "SECOND"
+    } ]
+  }, {
+    "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EEnum",
+    "name" : "DurationUnit",
+    "eLiterals" : [ {
+      "name" : "NANOSECOND"
+    }, {
+      "name" : "MICROSECOND",
+      "value" : 1
+    }, {
+      "name" : "MILLISECOND",
+      "value" : 2
+    }, {
+      "name" : "SECOND",
+      "value" : 3
+    }, {
+      "name" : "MINUTE",
+      "value" : 4
+    }, {
+      "name" : "HOUR",
+      "value" : 5
+    }, {
+      "name" : "DAY",
+      "value" : 6
+    }, {
+      "name" : "WEEK",
+      "value" : 7
+    }, {
+      "name" : "MONTH",
+      "value" : 8
+    }, {
+      "name" : "YEAR",
+      "value" : 9
+    } ]
+  }, {
+    "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+    "name" : "Formatted",
+    "eSuperTypes" : [ {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+      "$ref" : "//VisualElement"
+    } ],
+    "eStructuralFeatures" : [ {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EAttribute",
+      "name" : "format",
+      "lowerBound" : 1,
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+        "$ref" : "http://www.eclipse.org/emf/2003/XMLType#//String"
+      }
+    }, {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EReference",
+      "name" : "attributeType",
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+        "$ref" : "//data/AttributeType"
+      }
+    }, {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EAttribute",
+      "name" : "isMultiLine",
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+        "$ref" : "http://www.eclipse.org/emf/2003/XMLType#//Boolean"
+      }
+    } ]
+  }, {
+    "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+    "name" : "Button",
+    "eSuperTypes" : [ {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+      "$ref" : "//VisualElement"
+    }, {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+      "$ref" : "//ReferenceTypedVisualElement"
+    } ],
+    "eOperations" : [ {
+      "name" : "isSaveButton",
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+        "$ref" : "http://www.eclipse.org/emf/2003/XMLType#//Boolean"
+      }
+    }, {
+      "name" : "isBackButton",
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+        "$ref" : "http://www.eclipse.org/emf/2003/XMLType#//Boolean"
+      }
+    } ],
+    "eStructuralFeatures" : [ {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EReference",
+      "name" : "action",
+      "lowerBound" : 1,
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+        "$ref" : "//Action"
+      }
+    }, {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EAttribute",
+      "name" : "buttonStyle",
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+        "$ref" : "http://www.eclipse.org/emf/2003/XMLType#//String"
+      }
+    } ]
+  }, {
+    "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+    "name" : "Action",
+    "abstract" : true,
+    "eSuperTypes" : [ {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+      "$ref" : "//LabeledElement"
+    }, {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+      "$ref" : "//NamedElement"
+    } ],
+    "eOperations" : [ {
+      "name" : "getIsBackAction",
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+        "$ref" : "http://www.eclipse.org/emf/2003/XMLType#//Boolean"
+      }
+    }, {
+      "name" : "getIsSaveAction",
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+        "$ref" : "http://www.eclipse.org/emf/2003/XMLType#//Boolean"
+      }
+    }, {
+      "name" : "getIsAddAction",
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+        "$ref" : "http://www.eclipse.org/emf/2003/XMLType#//Boolean"
+      }
+    }, {
+      "name" : "getIsDeleteAction",
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+        "$ref" : "http://www.eclipse.org/emf/2003/XMLType#//Boolean"
+      }
+    }, {
+      "name" : "getIsRemoveAction",
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+        "$ref" : "http://www.eclipse.org/emf/2003/XMLType#//Boolean"
+      }
+    }, {
+      "name" : "getIsCreateAction",
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+        "$ref" : "http://www.eclipse.org/emf/2003/XMLType#//Boolean"
+      }
+    }, {
+      "name" : "getIsViewAction",
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+        "$ref" : "http://www.eclipse.org/emf/2003/XMLType#//Boolean"
+      }
+    }, {
+      "name" : "getIsSetAction",
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+        "$ref" : "http://www.eclipse.org/emf/2003/XMLType#//Boolean"
+      }
+    }, {
+      "name" : "getIsUnsetAction",
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+        "$ref" : "http://www.eclipse.org/emf/2003/XMLType#//Boolean"
+      }
+    }, {
+      "name" : "getIsCallOperationAction",
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+        "$ref" : "http://www.eclipse.org/emf/2003/XMLType#//Boolean"
+      }
+    }, {
+      "name" : "getIsNavigationToPageAction",
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+        "$ref" : "http://www.eclipse.org/emf/2003/XMLType#//Boolean"
+      }
+    }, {
+      "name" : "getIsPageAction",
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+        "$ref" : "http://www.eclipse.org/emf/2003/XMLType#//Boolean"
+      }
+    }, {
+      "name" : "getIsConfirmationTypeConditional",
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+        "$ref" : "http://www.eclipse.org/emf/2003/XMLType#//Boolean"
+      }
+    }, {
+      "name" : "getIsConfirmationTypeNone",
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+        "$ref" : "http://www.eclipse.org/emf/2003/XMLType#//Boolean"
+      }
+    }, {
+      "name" : "getIsConfirmationTypeMandatory",
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+        "$ref" : "http://www.eclipse.org/emf/2003/XMLType#//Boolean"
+      }
+    }, {
+      "name" : "getIsRefreshAction",
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+        "$ref" : "http://www.eclipse.org/emf/2003/XMLType#//Boolean"
+      }
+    }, {
+      "name" : "getIsFilterAction",
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+        "$ref" : "http://www.eclipse.org/emf/2003/XMLType#//Boolean"
+      }
+    }, {
+      "name" : "getIsSaveCreateAction",
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+        "$ref" : "http://www.eclipse.org/emf/2003/XMLType#//Boolean"
+      }
+    }, {
+      "name" : "getIsSaveInputAction",
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+        "$ref" : "http://www.eclipse.org/emf/2003/XMLType#//Boolean"
+      }
+    }, {
+      "name" : "getIsClearAction",
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+        "$ref" : "http://www.eclipse.org/emf/2003/XMLType#//Boolean"
+      }
+    }, {
+      "name" : "getIsRefreshRelationAction",
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+        "$ref" : "http://www.eclipse.org/emf/2003/XMLType#//Boolean"
+      }
+    }, {
+      "name" : "getIsFilterRelationAction",
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+        "$ref" : "http://www.eclipse.org/emf/2003/XMLType#//Boolean"
+      }
+    } ],
+    "eStructuralFeatures" : [ {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EReference",
+      "name" : "dataElement",
+      "lowerBound" : 1,
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+        "$ref" : "//data/DataElement"
+      }
+    }, {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EReference",
+      "name" : "confirmationCondition",
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+        "$ref" : "//data/AttributeType"
+      }
+    }, {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EAttribute",
+      "name" : "confirmationType",
+      "lowerBound" : 1,
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EEnum",
+        "$ref" : "//ConfirmationType"
+      },
+      "defaultValueLiteral" : "NONE"
+    }, {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EAttribute",
+      "name" : "confirmationMessage",
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+        "$ref" : "http://www.eclipse.org/emf/2003/XMLType#//String"
+      }
+    }, {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EAttribute",
+      "name" : "isTransient",
+      "lowerBound" : 1,
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+        "$ref" : "http://www.eclipse.org/emf/2003/XMLType#//Boolean"
+      },
+      "defaultValueLiteral" : "false"
+    }, {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EAttribute",
+      "name" : "placement",
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+        "$ref" : "http://www.eclipse.org/emf/2003/XMLType#//String"
+      }
+    }, {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EAttribute",
+      "name" : "type",
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EEnum",
+        "$ref" : "//ActionType"
+      },
+      "defaultValueLiteral" : "PAGE"
+    }, {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EReference",
+      "name" : "hiddenBy",
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+        "$ref" : "//data/AttributeType"
+      }
+    }, {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EReference",
+      "name" : "enabledBy",
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+        "$ref" : "//data/AttributeType"
+      }
+    }, {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EReference",
+      "name" : "definedOn",
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+        "$ref" : "//VisualElement"
+      }
+    } ]
+  }, {
+    "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+    "name" : "PageAction",
+    "abstract" : true,
+    "eSuperTypes" : [ {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+      "$ref" : "//Action"
+    } ],
+    "eStructuralFeatures" : [ {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EReference",
+      "name" : "target",
+      "lowerBound" : 1,
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+        "$ref" : "//PageDefinition"
+      }
+    } ]
+  }, {
+    "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+    "name" : "BackAction",
+    "eSuperTypes" : [ {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+      "$ref" : "//Action"
+    } ]
+  }, {
+    "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+    "name" : "SaveAction",
+    "abstract" : true,
+    "eSuperTypes" : [ {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+      "$ref" : "//Action"
+    } ]
+  }, {
+    "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+    "name" : "RemoveAction",
+    "eSuperTypes" : [ {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+      "$ref" : "//Action"
+    } ]
+  }, {
+    "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+    "name" : "AddAction",
+    "eSuperTypes" : [ {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+      "$ref" : "//Action"
+    } ]
+  }, {
+    "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+    "name" : "CreateAction",
+    "eSuperTypes" : [ {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+      "$ref" : "//PageAction"
+    } ]
+  }, {
+    "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+    "name" : "ViewAction",
+    "eSuperTypes" : [ {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+      "$ref" : "//PageAction"
+    } ]
+  }, {
+    "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+    "name" : "LayoutType",
+    "eSuperTypes" : [ {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+      "$ref" : "//NamedElement"
+    } ],
+    "eOperations" : [ {
+      "name" : "getTables",
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+        "$ref" : "http://www.eclipse.org/emf/2002/Ecore#//EEList"
+      }
+    }, {
+      "name" : "getPageContainers",
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+        "$ref" : "http://www.eclipse.org/emf/2002/Ecore#//EEList"
+      }
+    }, {
+      "name" : "getLinks",
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+        "$ref" : "http://www.eclipse.org/emf/2002/Ecore#//EEList"
+      }
+    } ],
+    "eStructuralFeatures" : [ {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EAttribute",
+      "name" : "cols",
+      "lowerBound" : 1,
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+        "$ref" : "http://www.eclipse.org/emf/2003/XMLType#//Int"
+      },
+      "defaultValueLiteral" : "12"
+    }, {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EAttribute",
+      "name" : "minimumResolution",
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+        "$ref" : "http://www.eclipse.org/emf/2003/XMLType#//Int"
+      }
+    }, {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EAttribute",
+      "name" : "maximumResolution",
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+        "$ref" : "http://www.eclipse.org/emf/2003/XMLType#//Int"
+      }
+    }, {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EAttribute",
+      "name" : "original",
+      "lowerBound" : 1,
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+        "$ref" : "http://www.eclipse.org/emf/2003/XMLType#//Boolean"
+      },
+      "defaultValueLiteral" : "true"
+    }, {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EAttribute",
+      "name" : "menuCollapsed",
+      "lowerBound" : 1,
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+        "$ref" : "http://www.eclipse.org/emf/2003/XMLType#//Boolean"
+      },
+      "defaultValueLiteral" : "false"
+    }, {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EAttribute",
+      "name" : "default",
+      "lowerBound" : 1,
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+        "$ref" : "http://www.eclipse.org/emf/2003/XMLType#//Boolean"
+      }
+    }, {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EAttribute",
+      "name" : "rowHeight",
+      "lowerBound" : 1,
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+        "$ref" : "http://www.eclipse.org/emf/2003/XMLType#//Int"
+      },
+      "defaultValueLiteral" : "72"
+    } ]
+  }, {
+    "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+    "name" : "PageContainer",
+    "eSuperTypes" : [ {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+      "$ref" : "//Flex"
+    } ],
+    "eOperations" : [ {
+      "name" : "getTables",
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+        "$ref" : "http://www.eclipse.org/emf/2002/Ecore#//EEList"
+      }
+    }, {
+      "name" : "getLinks",
+      "eGenericType" : {
+        "eTypeArguments" : [ { } ],
+        "eClassifier" : {
+          "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+          "$ref" : "http://www.eclipse.org/emf/2002/Ecore#//EEList"
+        }
+      }
+    } ],
+    "eStructuralFeatures" : [ {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EReference",
+      "name" : "layoutType",
+      "lowerBound" : 1,
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+        "$ref" : "//LayoutType"
+      }
+    }, {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EAttribute",
+      "name" : "transferPackageNameTokens",
+      "upperBound" : -1,
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+        "$ref" : "http://www.eclipse.org/emf/2003/XMLType#//String"
+      }
+    }, {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EAttribute",
+      "name" : "transferPageName",
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+        "$ref" : "http://www.eclipse.org/emf/2003/XMLType#//String"
+      }
+    }, {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EAttribute",
+      "name" : "transferPageType",
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EEnum",
+        "$ref" : "//PageType"
+      },
+      "defaultValueLiteral" : "VIEW"
+    } ]
+  }, {
+    "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+    "name" : "CallOperationAction",
+    "eSuperTypes" : [ {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+      "$ref" : "//Action"
+    } ],
+    "eStructuralFeatures" : [ {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EReference",
+      "name" : "inputParameterPage",
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+        "$ref" : "//PageDefinition"
+      }
+    }, {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EReference",
+      "name" : "outputParameterPage",
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+        "$ref" : "//PageDefinition"
+      }
+    }, {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EReference",
+      "name" : "operation",
+      "lowerBound" : 1,
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+        "$ref" : "//data/OperationType"
+      }
+    } ]
+  }, {
+    "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EEnum",
+    "name" : "PageType",
+    "eLiterals" : [ {
+      "name" : "CREATE"
+    }, {
+      "name" : "VIEW",
+      "value" : 2
+    }, {
+      "name" : "TABLE",
+      "value" : 3
+    }, {
+      "name" : "OPERATION_INPUT",
+      "value" : 5
+    }, {
+      "name" : "OPERATION_OUTPUT",
+      "value" : 6
+    }, {
+      "name" : "DASHBOARD",
+      "value" : 7
+    } ]
+  }, {
+    "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+    "name" : "DeleteAction",
+    "eSuperTypes" : [ {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+      "$ref" : "//Action"
+    } ]
+  }, {
+    "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+    "name" : "SetAction",
+    "eSuperTypes" : [ {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+      "$ref" : "//Action"
+    } ]
+  }, {
+    "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+    "name" : "UnsetAction",
+    "eSuperTypes" : [ {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+      "$ref" : "//Action"
+    } ]
+  }, {
+    "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+    "name" : "ReferenceTypedVisualElement",
+    "abstract" : true,
+    "eOperations" : [ {
+      "name" : "getRelationType",
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+        "$ref" : "//data/RelationType"
+      }
+    }, {
+      "name" : "getIsRelationType",
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+        "$ref" : "http://www.eclipse.org/emf/2003/XMLType#//Boolean"
+      }
+    }, {
+      "name" : "getTargetClassType",
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+        "$ref" : "//data/ClassType"
+      }
+    }, {
+      "name" : "getOperationParameterType",
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+        "$ref" : "//data/OperationParameterType"
+      }
+    }, {
+      "name" : "getIsOperationParameterType",
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+        "$ref" : "http://www.eclipse.org/emf/2003/XMLType#//Boolean"
+      }
+    } ],
+    "eStructuralFeatures" : [ {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EReference",
+      "name" : "dataElement",
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+        "$ref" : "//data/DataElement"
+      }
+    } ]
+  }, {
+    "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+    "name" : "NavigationToPageAction",
+    "eSuperTypes" : [ {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+      "$ref" : "//PageAction"
+    } ]
+  }, {
+    "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+    "name" : "EnumerationCombo",
+    "eSuperTypes" : [ {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+      "$ref" : "//Input"
+    } ],
+    "eStructuralFeatures" : [ {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EReference",
+      "name" : "options",
+      "lowerBound" : 1,
+      "upperBound" : -1,
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+        "$ref" : "//Option"
+      },
+      "containment" : true
+    } ]
+  }, {
+    "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+    "name" : "IconImage",
+    "eSuperTypes" : [ {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+      "$ref" : "//VisualElement"
+    } ]
+  }, {
+    "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+    "name" : "Label",
+    "eSuperTypes" : [ {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+      "$ref" : "//VisualElement"
+    } ]
+  }, {
+    "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EEnum",
+    "name" : "Stretch",
+    "eLiterals" : [ {
+      "name" : "NONE"
+    }, {
+      "name" : "HORIZONTAL",
+      "value" : 1
+    }, {
+      "name" : "VERTICAL",
+      "value" : 2
+    }, {
+      "name" : "BOTH",
+      "value" : 3
+    } ]
+  }, {
+    "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+    "name" : "Link",
+    "eSuperTypes" : [ {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+      "$ref" : "//VisualElement"
+    }, {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+      "$ref" : "//ReferenceTypedVisualElement"
+    } ],
+    "eOperations" : [ {
+      "name" : "getColumns",
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+        "$ref" : "http://www.eclipse.org/emf/2002/Ecore#//EEList"
+      }
+    }, {
+      "name" : "getFormattedMask",
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+        "$ref" : "http://www.eclipse.org/emf/2003/XMLType#//String"
+      }
+    }, {
+      "name" : "getDefaultSortColumn",
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+        "$ref" : "//Column"
+      }
+    }, {
+      "name" : "getFormattedMaskForRange",
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+        "$ref" : "http://www.eclipse.org/emf/2003/XMLType#//String"
+      }
+    } ],
+    "eStructuralFeatures" : [ {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EReference",
+      "name" : "actions",
+      "upperBound" : -1,
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+        "$ref" : "//Action"
+      }
+    }, {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EReference",
+      "name" : "parts",
+      "lowerBound" : 1,
+      "upperBound" : -1,
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+        "$ref" : "//Column"
+      },
+      "containment" : true
+    }, {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EReference",
+      "name" : "filters",
+      "upperBound" : -1,
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+        "$ref" : "//Filter"
+      },
+      "containment" : true
+    } ]
+  }, {
+    "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EEnum",
+    "name" : "ConfirmationType",
+    "eLiterals" : [ {
+      "name" : "NONE"
+    }, {
+      "name" : "CONDITIONAL",
+      "value" : 1
+    }, {
+      "name" : "MANDATORY",
+      "value" : 2
+    } ]
+  }, {
+    "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+    "name" : "RefreshAction",
+    "eSuperTypes" : [ {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+      "$ref" : "//Action"
+    } ]
+  }, {
+    "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+    "name" : "FilterAction",
+    "eSuperTypes" : [ {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+      "$ref" : "//Action"
+    } ]
+  }, {
+    "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+    "name" : "Filter",
+    "eSuperTypes" : [ {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+      "$ref" : "//VisualElement"
+    } ],
+    "eStructuralFeatures" : [ {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EReference",
+      "name" : "attributeType",
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+        "$ref" : "//data/AttributeType"
+      }
+    } ]
+  }, {
+    "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+    "name" : "LabeledElement",
+    "abstract" : true,
+    "eStructuralFeatures" : [ {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EAttribute",
+      "name" : "label",
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+        "$ref" : "http://www.eclipse.org/emf/2003/XMLType#//String"
+      }
+    }, {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EReference",
+      "name" : "icon",
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+        "$ref" : "//Icon"
+      },
+      "containment" : true
+    } ]
+  }, {
+    "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+    "name" : "Frame",
+    "eStructuralFeatures" : [ {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EAttribute",
+      "name" : "elevation",
+      "lowerBound" : 1,
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+        "$ref" : "http://www.eclipse.org/emf/2003/XMLType#//Double"
+      },
+      "defaultValueLiteral" : "4"
+    }, {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EAttribute",
+      "name" : "radius",
+      "lowerBound" : 1,
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+        "$ref" : "http://www.eclipse.org/emf/2003/XMLType#//Double"
+      },
+      "defaultValueLiteral" : "10.0"
+    } ]
+  }, {
+    "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EEnum",
+    "name" : "ActionType",
+    "eLiterals" : [ {
+      "name" : "PAGE"
+    }, {
+      "name" : "TABLE",
+      "value" : 1
+    }, {
+      "name" : "ROW",
+      "value" : 2
+    }, {
+      "name" : "LINK",
+      "value" : 3
+    }, {
+      "name" : "BUTTON",
+      "value" : 4
+    } ]
+  }, {
+    "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+    "name" : "SaveCreateAction",
+    "eSuperTypes" : [ {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+      "$ref" : "//SaveAction"
+    } ]
+  }, {
+    "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+    "name" : "SaveInputAction",
+    "eSuperTypes" : [ {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+      "$ref" : "//SaveAction"
+    } ]
+  }, {
+    "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+    "name" : "BinaryTypeInput",
+    "eSuperTypes" : [ {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+      "$ref" : "//Input"
+    } ]
+  }, {
+    "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+    "name" : "Mask",
+    "eStructuralFeatures" : [ {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EReference",
+      "name" : "attributeTypes",
+      "upperBound" : -1,
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+        "$ref" : "//data/AttributeType"
+      }
+    }, {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EReference",
+      "name" : "maskRelations",
+      "upperBound" : -1,
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+        "$ref" : "//MaskRelation"
+      },
+      "containment" : true
+    } ]
+  }, {
+    "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+    "name" : "MaskRelation",
+    "eStructuralFeatures" : [ {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EReference",
+      "name" : "attributeTypes",
+      "upperBound" : -1,
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+        "$ref" : "//data/AttributeType"
+      }
+    }, {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EReference",
+      "name" : "relationType",
+      "lowerBound" : 1,
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+        "$ref" : "//data/ReferenceType"
+      }
+    } ]
+  }, {
+    "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+    "name" : "Column",
+    "eSuperTypes" : [ {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+      "$ref" : "//VisualElement"
+    } ],
+    "eStructuralFeatures" : [ {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EAttribute",
+      "name" : "format",
+      "lowerBound" : 1,
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+        "$ref" : "http://www.eclipse.org/emf/2003/XMLType#//String"
+      }
+    }, {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EReference",
+      "name" : "attributeType",
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+        "$ref" : "//data/AttributeType"
+      }
+    }, {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EAttribute",
+      "name" : "sort",
+      "lowerBound" : 1,
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EEnum",
+        "$ref" : "//Sort"
+      },
+      "defaultValueLiteral" : "ASC"
+    }, {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EAttribute",
+      "name" : "width",
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+        "$ref" : "http://www.eclipse.org/emf/2003/XMLType#//String"
+      }
+    } ]
+  }, {
+    "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EEnum",
+    "eAnnotations" : [ {
+      "source" : "http://www.eclipse.org/emf/2002/GenModel",
+      "details" : {
+        "documentation" : "How the child is inscribed into the available space."
+      }
+    } ],
+    "name" : "Sort",
+    "eLiterals" : [ {
+      "eAnnotations" : [ {
+        "source" : "http://www.eclipse.org/emf/2002/GenModel",
+        "details" : {
+          "documentation" : "The child can be at most as large as the available space (but is allowed to be smaller).\n\nThe Flexible widget assigns this kind of FlexFit to its child."
+        }
+      } ],
+      "name" : "ASC",
+      "value" : 1
+    }, {
+      "eAnnotations" : [ {
+        "source" : "http://www.eclipse.org/emf/2002/GenModel",
+        "details" : {
+          "documentation" : "The child is forced to fill the available space.\n\nThe Expanded widget assigns this kind of FlexFit to its child."
+        }
+      } ],
+      "name" : "DESC",
+      "value" : 2
+    }, {
+      "name" : "NONE"
+    } ]
+  }, {
+    "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+    "name" : "ActionGroup",
+    "eSuperTypes" : [ {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+      "$ref" : "//VisualElement"
+    } ],
+    "eStructuralFeatures" : [ {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EReference",
+      "name" : "actions",
+      "upperBound" : -1,
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+        "$ref" : "//Button"
+      },
+      "containment" : true
+    }, {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EAttribute",
+      "name" : "featuredActions",
+      "lowerBound" : 1,
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+        "$ref" : "http://www.eclipse.org/emf/2003/XMLType#//Int"
+      },
+      "defaultValueLiteral" : "0"
+    } ]
+  }, {
+    "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+    "name" : "TimeInput",
+    "eSuperTypes" : [ {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+      "$ref" : "//Input"
+    } ],
+    "eStructuralFeatures" : [ {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EAttribute",
+      "name" : "baseUnit",
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EEnum",
+        "$ref" : "//DurationUnit"
+      },
+      "defaultValueLiteral" : "SECOND"
+    } ]
+  }, {
+    "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+    "name" : "ClearAction",
+    "eSuperTypes" : [ {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+      "$ref" : "//Action"
+    } ]
+  }, {
+    "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+    "name" : "TrinaryLogicCombo",
+    "eSuperTypes" : [ {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+      "$ref" : "//Input"
+    } ]
+  }, {
+    "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+    "name" : "Authentication",
+    "eStructuralFeatures" : [ {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EAttribute",
+      "name" : "realm",
+      "lowerBound" : 1,
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+        "$ref" : "http://www.eclipse.org/emf/2002/Ecore#//EString"
+      }
+    }, {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EReference",
+      "name" : "claims",
+      "upperBound" : -1,
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+        "$ref" : "//Claim"
+      }
+    } ]
+  }, {
+    "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+    "name" : "Claim",
+    "eStructuralFeatures" : [ {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EAttribute",
+      "name" : "type",
+      "lowerBound" : 1,
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EEnum",
+        "$ref" : "//ClaimType"
+      }
+    }, {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EReference",
+      "name" : "attributeType",
+      "lowerBound" : 1,
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+        "$ref" : "//data/AttributeType"
+      }
+    } ]
+  }, {
+    "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EEnum",
+    "name" : "ClaimType",
+    "eLiterals" : [ {
+      "name" : "UNDEFINED"
+    }, {
+      "name" : "EMAIL",
+      "value" : 1
+    }, {
+      "name" : "USERNAME",
+      "value" : 2
+    } ]
+  }, {
+    "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EEnum",
+    "name" : "TitleFrom",
+    "eLiterals" : [ {
+      "name" : "LABEL"
+    }, {
+      "name" : "ATTRIBUTE",
+      "value" : 1
+    } ]
+  }, {
+    "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+    "name" : "RefreshRelationAction",
+    "eSuperTypes" : [ {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+      "$ref" : "//Action"
+    } ]
+  }, {
+    "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+    "name" : "FilterRelationAction",
+    "eSuperTypes" : [ {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+      "$ref" : "//Action"
+    } ]
+  }, {
+    "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EEnum",
+    "name" : "TabOrientation",
+    "eLiterals" : [ {
+      "name" : "HORIZONTAL"
+    }, {
+      "name" : "VERTICAL",
+      "value" : 1
+    } ]
+  }, {
+    "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+    "name" : "Theme",
+    "eStructuralFeatures" : [ {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EAttribute",
+      "name" : "textPrimaryColor",
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+        "$ref" : "http://www.eclipse.org/emf/2003/XMLType#//String"
+      }
+    }, {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EAttribute",
+      "name" : "textSecondaryColor",
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+        "$ref" : "http://www.eclipse.org/emf/2003/XMLType#//String"
+      }
+    }, {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EAttribute",
+      "name" : "primaryColor",
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+        "$ref" : "http://www.eclipse.org/emf/2003/XMLType#//String"
+      }
+    }, {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EAttribute",
+      "name" : "subtitleColor",
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+        "$ref" : "http://www.eclipse.org/emf/2003/XMLType#//String"
+      }
+    }, {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EAttribute",
+      "name" : "secondaryColor",
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+        "$ref" : "http://www.eclipse.org/emf/2003/XMLType#//String"
+      }
+    }, {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EAttribute",
+      "name" : "backgroundColor",
+      "eType" : {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+        "$ref" : "http://www.eclipse.org/emf/2003/XMLType#//String"
+      }
+    } ]
+  }, {
+    "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EEnum",
+    "name" : "DialogSize",
+    "eLiterals" : [ {
+      "name" : "XS"
+    }, {
+      "name" : "SM",
+      "value" : 1
+    }, {
+      "name" : "MD",
+      "value" : 2
+    }, {
+      "name" : "LG",
+      "value" : 3
+    }, {
+      "name" : "XL",
+      "value" : 4
+    } ]
+  } ],
+  "eSubpackages" : [ {
+    "name" : "data",
+    "nsURI" : "http://blackbelt.hu/judo/meta/ui/data",
+    "nsPrefix" : "data",
+    "eClassifiers" : [ {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+      "name" : "DataElement",
+      "abstract" : true,
+      "eSuperTypes" : [ {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+        "$ref" : "//NamedElement"
+      } ]
+    }, {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+      "name" : "ClassType",
+      "eSuperTypes" : [ {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+        "$ref" : "//data/DataElement"
+      } ],
+      "eOperations" : [ {
+        "name" : "getIsRefreshable",
+        "eType" : {
+          "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+          "$ref" : "http://www.eclipse.org/emf/2003/XMLType#//Boolean"
+        }
+      }, {
+        "name" : "getIsUpdatable",
+        "eType" : {
+          "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+          "$ref" : "http://www.eclipse.org/emf/2003/XMLType#//Boolean"
+        }
+      }, {
+        "name" : "getIsDeletable",
+        "eType" : {
+          "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+          "$ref" : "http://www.eclipse.org/emf/2003/XMLType#//Boolean"
+        }
+      }, {
+        "name" : "getIsTemplateable",
+        "eType" : {
+          "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+          "$ref" : "http://www.eclipse.org/emf/2003/XMLType#//Boolean"
+        }
+      }, {
+        "name" : "getIsUpdateValidatable",
+        "eType" : {
+          "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+          "$ref" : "http://www.eclipse.org/emf/2003/XMLType#//Boolean"
+        }
+      } ],
+      "eStructuralFeatures" : [ {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EReference",
+        "name" : "operations",
+        "upperBound" : -1,
+        "eType" : {
+          "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+          "$ref" : "//data/OperationType"
+        },
+        "containment" : true
+      }, {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EReference",
+        "name" : "relations",
+        "upperBound" : -1,
+        "eType" : {
+          "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+          "$ref" : "//data/RelationType"
+        },
+        "containment" : true
+      }, {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EReference",
+        "name" : "attributes",
+        "upperBound" : -1,
+        "eType" : {
+          "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+          "$ref" : "//data/AttributeType"
+        },
+        "containment" : true
+      }, {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EAttribute",
+        "name" : "isMapped",
+        "lowerBound" : 1,
+        "eType" : {
+          "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+          "$ref" : "http://www.eclipse.org/emf/2003/XMLType#//Boolean"
+        },
+        "defaultValueLiteral" : "true"
+      }, {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EAttribute",
+        "name" : "isPrincipal",
+        "lowerBound" : 1,
+        "eType" : {
+          "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+          "$ref" : "http://www.eclipse.org/emf/2003/XMLType#//Boolean"
+        },
+        "defaultValueLiteral" : "false"
+      }, {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EAttribute",
+        "name" : "isActor",
+        "lowerBound" : 1,
+        "eType" : {
+          "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+          "$ref" : "http://www.eclipse.org/emf/2003/XMLType#//Boolean"
+        },
+        "defaultValueLiteral" : "false"
+      }, {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EAttribute",
+        "name" : "behaviours",
+        "upperBound" : -1,
+        "eType" : {
+          "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EEnum",
+          "$ref" : "//data/ClassBehaviourType"
+        },
+        "defaultValueLiteral" : ""
+      }, {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EReference",
+        "name" : "representation",
+        "eType" : {
+          "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+          "$ref" : "//data/AttributeType"
+        }
+      }, {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EAttribute",
+        "name" : "transferObjectTypeName",
+        "eType" : {
+          "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+          "$ref" : "http://www.eclipse.org/emf/2003/XMLType#//String"
+        }
+      }, {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EAttribute",
+        "name" : "isOptional",
+        "lowerBound" : 1,
+        "eType" : {
+          "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+          "$ref" : "http://www.eclipse.org/emf/2003/XMLType#//Boolean"
+        },
+        "defaultValueLiteral" : "false"
+      }, {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EAttribute",
+        "name" : "isForCreateOrUpdateType",
+        "lowerBound" : 1,
+        "eType" : {
+          "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+          "$ref" : "http://www.eclipse.org/emf/2003/XMLType#//Boolean"
+        },
+        "defaultValueLiteral" : "false"
+      }, {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EAttribute",
+        "name" : "simpleName",
+        "eType" : {
+          "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+          "$ref" : "http://www.eclipse.org/emf/2003/XMLType#//String"
+        }
+      }, {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EAttribute",
+        "name" : "packageNameTokens",
+        "upperBound" : -1,
+        "eType" : {
+          "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+          "$ref" : "http://www.eclipse.org/emf/2003/XMLType#//String"
+        }
+      } ]
+    }, {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+      "name" : "RelationType",
+      "eSuperTypes" : [ {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+        "$ref" : "//data/ReferenceType"
+      } ],
+      "eOperations" : [ {
+        "name" : "getIsRelationEmbedded",
+        "eType" : {
+          "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+          "$ref" : "http://www.eclipse.org/emf/2003/XMLType#//Boolean"
+        }
+      }, {
+        "name" : "getIsListable",
+        "eType" : {
+          "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+          "$ref" : "http://www.eclipse.org/emf/2003/XMLType#//Boolean"
+        }
+      }, {
+        "name" : "getIsCreatable",
+        "eType" : {
+          "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+          "$ref" : "http://www.eclipse.org/emf/2003/XMLType#//Boolean"
+        }
+      }, {
+        "name" : "getIsSetable",
+        "eType" : {
+          "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+          "$ref" : "http://www.eclipse.org/emf/2003/XMLType#//Boolean"
+        }
+      }, {
+        "name" : "getIsUnsetable",
+        "eType" : {
+          "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+          "$ref" : "http://www.eclipse.org/emf/2003/XMLType#//Boolean"
+        }
+      }, {
+        "name" : "getIsAddable",
+        "eType" : {
+          "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+          "$ref" : "http://www.eclipse.org/emf/2003/XMLType#//Boolean"
+        }
+      }, {
+        "name" : "getIsRemovable",
+        "eType" : {
+          "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+          "$ref" : "http://www.eclipse.org/emf/2003/XMLType#//Boolean"
+        }
+      }, {
+        "name" : "getIsRangeable",
+        "eType" : {
+          "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+          "$ref" : "http://www.eclipse.org/emf/2003/XMLType#//Boolean"
+        }
+      }, {
+        "name" : "getIsCreateValidatable",
+        "eType" : {
+          "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+          "$ref" : "http://www.eclipse.org/emf/2003/XMLType#//Boolean"
+        }
+      }, {
+        "name" : "getIsRelationKindAssociation",
+        "eType" : {
+          "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+          "$ref" : "http://www.eclipse.org/emf/2003/XMLType#//Boolean"
+        }
+      }, {
+        "name" : "getIsRelationKindComposition",
+        "eType" : {
+          "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+          "$ref" : "http://www.eclipse.org/emf/2003/XMLType#//Boolean"
+        }
+      }, {
+        "name" : "getIsRelationKindAggregation",
+        "eType" : {
+          "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+          "$ref" : "http://www.eclipse.org/emf/2003/XMLType#//Boolean"
+        }
+      }, {
+        "name" : "getIsRelationKindStatic",
+        "eType" : {
+          "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+          "$ref" : "http://www.eclipse.org/emf/2003/XMLType#//Boolean"
+        }
+      }, {
+        "name" : "getIsMemberTypeStored",
+        "eType" : {
+          "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+          "$ref" : "http://www.eclipse.org/emf/2003/XMLType#//Boolean"
+        }
+      }, {
+        "name" : "getIsMemberTypeDerived",
+        "eType" : {
+          "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+          "$ref" : "http://www.eclipse.org/emf/2003/XMLType#//Boolean"
+        }
+      }, {
+        "name" : "getIsMemberTypeMapped",
+        "eType" : {
+          "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+          "$ref" : "http://www.eclipse.org/emf/2003/XMLType#//Boolean"
+        }
+      }, {
+        "name" : "getIsMemberTypeTransient",
+        "eType" : {
+          "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+          "$ref" : "http://www.eclipse.org/emf/2003/XMLType#//Boolean"
+        }
+      }, {
+        "name" : "getIsMemberTypeAccess",
+        "eType" : {
+          "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+          "$ref" : "http://www.eclipse.org/emf/2003/XMLType#//Boolean"
+        }
+      }, {
+        "name" : "getIsRefreshable",
+        "eType" : {
+          "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+          "$ref" : "http://www.eclipse.org/emf/2003/XMLType#//Boolean"
+        }
+      }, {
+        "name" : "getIsUpdatable",
+        "eType" : {
+          "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+          "$ref" : "http://www.eclipse.org/emf/2003/XMLType#//Boolean"
+        }
+      }, {
+        "name" : "getIsUpdateValidatable",
+        "eType" : {
+          "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+          "$ref" : "http://www.eclipse.org/emf/2003/XMLType#//Boolean"
+        }
+      }, {
+        "name" : "getIsDeletable",
+        "eType" : {
+          "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+          "$ref" : "http://www.eclipse.org/emf/2003/XMLType#//Boolean"
+        }
+      }, {
+        "name" : "getIsTemplateable",
+        "eType" : {
+          "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+          "$ref" : "http://www.eclipse.org/emf/2003/XMLType#//Boolean"
+        }
+      }, {
+        "name" : "getOwnerSimpleName",
+        "eType" : {
+          "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+          "$ref" : "http://www.eclipse.org/emf/2003/XMLType#//String"
+        }
+      }, {
+        "name" : "getOwnerPackageNameTokens",
+        "upperBound" : -1,
+        "eType" : {
+          "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+          "$ref" : "http://www.eclipse.org/emf/2003/XMLType#//String"
+        }
+      }, {
+        "name" : "getIsClearable",
+        "eType" : {
+          "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+          "$ref" : "http://www.eclipse.org/emf/2003/XMLType#//Boolean"
+        }
+      } ],
+      "eStructuralFeatures" : [ {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EAttribute",
+        "name" : "relationKind",
+        "lowerBound" : 1,
+        "eType" : {
+          "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EEnum",
+          "$ref" : "//data/RelationKind"
+        },
+        "defaultValueLiteral" : "ASSOCIATION"
+      }, {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EAttribute",
+        "name" : "memberType",
+        "lowerBound" : 1,
+        "eType" : {
+          "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EEnum",
+          "$ref" : "//data/MemberType"
+        },
+        "defaultValueLiteral" : "STORED"
+      }, {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EAttribute",
+        "name" : "isAccess",
+        "lowerBound" : 1,
+        "eType" : {
+          "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+          "$ref" : "http://www.eclipse.org/emf/2003/XMLType#//Boolean"
+        },
+        "defaultValueLiteral" : "false"
+      }, {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EAttribute",
+        "name" : "behaviours",
+        "upperBound" : -1,
+        "eType" : {
+          "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EEnum",
+          "$ref" : "//data/RelationBehaviourType"
+        },
+        "defaultValueLiteral" : ""
+      }, {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EAttribute",
+        "name" : "isReadOnly",
+        "lowerBound" : 1,
+        "eType" : {
+          "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+          "$ref" : "http://www.eclipse.org/emf/2003/XMLType#//Boolean"
+        },
+        "defaultValueLiteral" : "false"
+      } ]
+    }, {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+      "name" : "AttributeType",
+      "eSuperTypes" : [ {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+        "$ref" : "//data/DataElement"
+      } ],
+      "eOperations" : [ {
+        "name" : "getIsMemberTypeMapped",
+        "eType" : {
+          "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+          "$ref" : "http://www.eclipse.org/emf/2003/XMLType#//Boolean"
+        }
+      }, {
+        "name" : "getIsMemberTypeStored",
+        "eType" : {
+          "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+          "$ref" : "http://www.eclipse.org/emf/2003/XMLType#//Boolean"
+        }
+      }, {
+        "name" : "getIsMemberTypeTransient",
+        "eType" : {
+          "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+          "$ref" : "http://www.eclipse.org/emf/2003/XMLType#//Boolean"
+        }
+      }, {
+        "name" : "getIsMemberTypeDerived",
+        "eType" : {
+          "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+          "$ref" : "http://www.eclipse.org/emf/2003/XMLType#//Boolean"
+        }
+      }, {
+        "name" : "getIsMemberTypeAccess",
+        "eType" : {
+          "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+          "$ref" : "http://www.eclipse.org/emf/2003/XMLType#//Boolean"
+        }
+      }, {
+        "name" : "getOwnerSimpleName",
+        "eType" : {
+          "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+          "$ref" : "http://www.eclipse.org/emf/2003/XMLType#//String"
+        }
+      }, {
+        "name" : "getOwnerPackageNameTokens",
+        "upperBound" : -1,
+        "eType" : {
+          "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+          "$ref" : "http://www.eclipse.org/emf/2003/XMLType#//String"
+        }
+      } ],
+      "eStructuralFeatures" : [ {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EAttribute",
+        "name" : "memberType",
+        "lowerBound" : 1,
+        "eType" : {
+          "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EEnum",
+          "$ref" : "//data/MemberType"
+        },
+        "defaultValueLiteral" : "STORED"
+      }, {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EAttribute",
+        "name" : "isReadOnly",
+        "lowerBound" : 1,
+        "eType" : {
+          "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+          "$ref" : "http://www.eclipse.org/emf/2003/XMLType#//Boolean"
+        },
+        "defaultValueLiteral" : "true"
+      }, {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EReference",
+        "name" : "dataType",
+        "lowerBound" : 1,
+        "eType" : {
+          "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+          "$ref" : "//data/DataType"
+        }
+      }, {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EAttribute",
+        "name" : "isFilterable",
+        "lowerBound" : 1,
+        "eType" : {
+          "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+          "$ref" : "http://www.eclipse.org/emf/2003/XMLType#//Boolean"
+        }
+      }, {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EAttribute",
+        "name" : "isRequired",
+        "lowerBound" : 1,
+        "eType" : {
+          "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+          "$ref" : "http://www.eclipse.org/emf/2003/XMLType#//Boolean"
+        }
+      } ]
+    }, {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+      "name" : "EnumerationType",
+      "eSuperTypes" : [ {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+        "$ref" : "//data/DataType"
+      } ],
+      "eStructuralFeatures" : [ {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EReference",
+        "name" : "members",
+        "lowerBound" : 1,
+        "upperBound" : -1,
+        "eType" : {
+          "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+          "$ref" : "//data/EnumerationMember"
+        },
+        "containment" : true
+      } ]
+    }, {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+      "name" : "ApplicationType",
+      "eSuperTypes" : [ {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+        "$ref" : "//data/DataElement"
+      } ],
+      "eStructuralFeatures" : [ {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EReference",
+        "name" : "target",
+        "lowerBound" : 1,
+        "eType" : {
+          "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+          "$ref" : "//data/ClassType"
+        }
+      } ]
+    }, {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+      "name" : "OperationType",
+      "eSuperTypes" : [ {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+        "$ref" : "//data/DataElement"
+      } ],
+      "eOperations" : [ {
+        "name" : "getIsStatic",
+        "eType" : {
+          "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+          "$ref" : "http://www.eclipse.org/emf/2003/XMLType#//Boolean"
+        }
+      }, {
+        "name" : "getIsMapped",
+        "eType" : {
+          "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+          "$ref" : "http://www.eclipse.org/emf/2003/XMLType#//Boolean"
+        }
+      }, {
+        "name" : "getOwnerSimpleName",
+        "eType" : {
+          "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+          "$ref" : "http://www.eclipse.org/emf/2003/XMLType#//String"
+        }
+      }, {
+        "name" : "getOwnerPackageNameTokens",
+        "upperBound" : -1,
+        "eType" : {
+          "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+          "$ref" : "http://www.eclipse.org/emf/2003/XMLType#//String"
+        }
+      }, {
+        "name" : "getIsInputRangeable",
+        "eType" : {
+          "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+          "$ref" : "http://www.eclipse.org/emf/2003/XMLType#//Boolean"
+        }
+      } ],
+      "eStructuralFeatures" : [ {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EReference",
+        "name" : "input",
+        "eType" : {
+          "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+          "$ref" : "//data/OperationParameterType"
+        },
+        "containment" : true
+      }, {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EReference",
+        "name" : "output",
+        "eType" : {
+          "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+          "$ref" : "//data/OperationParameterType"
+        },
+        "containment" : true
+      }, {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EAttribute",
+        "name" : "operationType",
+        "lowerBound" : 1,
+        "eType" : {
+          "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EEnum",
+          "$ref" : "//data/OperationTypeEnum"
+        },
+        "defaultValueLiteral" : "MAPPED"
+      }, {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EAttribute",
+        "name" : "isStateful",
+        "lowerBound" : 1,
+        "eType" : {
+          "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+          "$ref" : "http://www.eclipse.org/emf/2003/XMLType#//Boolean"
+        },
+        "defaultValueLiteral" : "true"
+      }, {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EReference",
+        "name" : "faults",
+        "upperBound" : -1,
+        "eType" : {
+          "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+          "$ref" : "//data/OperationParameterType"
+        },
+        "containment" : true
+      } ]
+    }, {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+      "name" : "OperationParameterType",
+      "eSuperTypes" : [ {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+        "$ref" : "//data/ReferenceType"
+      } ],
+      "eOperations" : [ {
+        "name" : "getIsUpdatable",
+        "eType" : {
+          "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+          "$ref" : "http://www.eclipse.org/emf/2003/XMLType#//Boolean"
+        }
+      }, {
+        "name" : "getIsRefreshable",
+        "eType" : {
+          "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+          "$ref" : "http://www.eclipse.org/emf/2003/XMLType#//Boolean"
+        }
+      }, {
+        "name" : "getIsDeletable",
+        "eType" : {
+          "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+          "$ref" : "http://www.eclipse.org/emf/2003/XMLType#//Boolean"
+        }
+      } ],
+      "eStructuralFeatures" : [ {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EAttribute",
+        "name" : "behaviours",
+        "upperBound" : -1,
+        "eType" : {
+          "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EEnum",
+          "$ref" : "//data/OperationTargetBehaviourType"
+        },
+        "defaultValueLiteral" : ""
+      } ]
+    }, {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EEnum",
+      "name" : "RelationKind",
+      "eLiterals" : [ {
+        "name" : "ASSOCIATION"
+      }, {
+        "name" : "COMPOSITION",
+        "value" : 1
+      }, {
+        "name" : "AGGREGATION",
+        "value" : 2
+      }, {
+        "name" : "STATIC",
+        "value" : 3,
+        "literal" : "STATIC"
+      } ]
+    }, {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EEnum",
+      "name" : "MemberType",
+      "eLiterals" : [ {
+        "name" : "STORED"
+      }, {
+        "name" : "DERIVED",
+        "value" : 1
+      }, {
+        "name" : "MAPPED",
+        "value" : 2
+      }, {
+        "name" : "TRANSIENT",
+        "value" : 3
+      }, {
+        "name" : "ACCESS",
+        "value" : 4,
+        "literal" : "ACCESS"
+      } ]
+    }, {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+      "name" : "TimestampType",
+      "eSuperTypes" : [ {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+        "$ref" : "//data/DataType"
+      } ]
+    }, {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+      "name" : "DataType",
+      "abstract" : true,
+      "eSuperTypes" : [ {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+        "$ref" : "//NamedElement"
+      } ],
+      "eOperations" : [ {
+        "name" : "getClassDisplayLabel",
+        "lowerBound" : 1
+      } ],
+      "eStructuralFeatures" : [ {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EReference",
+        "name" : "operator",
+        "eType" : {
+          "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+          "$ref" : "//data/EnumerationType"
+        }
+      } ]
+    }, {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+      "name" : "NumericType",
+      "eSuperTypes" : [ {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+        "$ref" : "//data/DataType"
+      } ],
+      "eStructuralFeatures" : [ {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EAttribute",
+        "name" : "precision",
+        "lowerBound" : 1,
+        "eType" : {
+          "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+          "$ref" : "http://www.eclipse.org/emf/2003/XMLType#//Int"
+        }
+      }, {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EAttribute",
+        "name" : "scale",
+        "lowerBound" : 1,
+        "eType" : {
+          "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+          "$ref" : "http://www.eclipse.org/emf/2003/XMLType#//Int"
+        }
+      } ]
+    }, {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+      "name" : "BooleanType",
+      "eSuperTypes" : [ {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+        "$ref" : "//data/DataType"
+      } ]
+    }, {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+      "name" : "StringType",
+      "eSuperTypes" : [ {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+        "$ref" : "//data/DataType"
+      } ],
+      "eStructuralFeatures" : [ {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EAttribute",
+        "name" : "maxLength",
+        "lowerBound" : 1,
+        "eType" : {
+          "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+          "$ref" : "http://www.eclipse.org/emf/2003/XMLType#//Int"
+        }
+      }, {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EAttribute",
+        "name" : "regExp",
+        "eType" : {
+          "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+          "$ref" : "http://www.eclipse.org/emf/2003/XMLType#//String"
+        }
+      } ]
+    }, {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+      "name" : "PasswordType",
+      "eSuperTypes" : [ {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+        "$ref" : "//data/DataType"
+      } ]
+    }, {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+      "name" : "DateType",
+      "eSuperTypes" : [ {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+        "$ref" : "//data/DataType"
+      } ]
+    }, {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+      "name" : "EnumerationMember",
+      "eSuperTypes" : [ {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+        "$ref" : "//NamedElement"
+      } ],
+      "eStructuralFeatures" : [ {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EAttribute",
+        "name" : "ordinal",
+        "lowerBound" : 1,
+        "eType" : {
+          "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+          "$ref" : "http://www.eclipse.org/emf/2003/XMLType#//Int"
+        }
+      } ]
+    }, {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EEnum",
+      "name" : "RelationBehaviourType",
+      "eLiterals" : [ {
+        "name" : "LIST"
+      }, {
+        "name" : "CREATE",
+        "value" : 1
+      }, {
+        "name" : "SET",
+        "value" : 2
+      }, {
+        "name" : "UNSET",
+        "value" : 3
+      }, {
+        "name" : "ADD",
+        "value" : 4
+      }, {
+        "name" : "REMOVE",
+        "value" : 5
+      }, {
+        "name" : "RANGE",
+        "value" : 6
+      }, {
+        "name" : "VALIDATE_CREATE",
+        "value" : 7
+      }, {
+        "name" : "TEMPLATE",
+        "value" : 4
+      }, {
+        "name" : "UPDATE",
+        "value" : 1
+      }, {
+        "name" : "VALIDATE_UPDATE",
+        "value" : 2
+      }, {
+        "name" : "DELETE",
+        "value" : 3
+      }, {
+        "name" : "REFRESH"
+      } ]
+    }, {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EEnum",
+      "name" : "ClassBehaviourType",
+      "eLiterals" : [ {
+        "name" : "REFRESH"
+      }, {
+        "name" : "UPDATE",
+        "value" : 1
+      }, {
+        "name" : "VALIDATE_UPDATE",
+        "value" : 2
+      }, {
+        "name" : "DELETE",
+        "value" : 3
+      }, {
+        "name" : "TEMPLATE",
+        "value" : 4
+      } ]
+    }, {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EEnum",
+      "name" : "OperationTypeEnum",
+      "eLiterals" : [ {
+        "name" : "MAPPED",
+        "literal" : "MAPPED"
+      }, {
+        "name" : "STATIC",
+        "value" : 1,
+        "literal" : "STATIC"
+      } ]
+    }, {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+      "name" : "ReferenceType",
+      "abstract" : true,
+      "eSuperTypes" : [ {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+        "$ref" : "//data/DataElement"
+      } ],
+      "eOperations" : [ {
+        "name" : "getIsListable",
+        "eType" : {
+          "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+          "$ref" : "http://www.eclipse.org/emf/2003/XMLType#//Boolean"
+        }
+      }, {
+        "name" : "getIsCreatable",
+        "eType" : {
+          "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+          "$ref" : "http://www.eclipse.org/emf/2003/XMLType#//Boolean"
+        }
+      }, {
+        "name" : "getIsSetable",
+        "eType" : {
+          "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+          "$ref" : "http://www.eclipse.org/emf/2003/XMLType#//Boolean"
+        }
+      }, {
+        "name" : "getIsUnsetable",
+        "eType" : {
+          "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+          "$ref" : "http://www.eclipse.org/emf/2003/XMLType#//Boolean"
+        }
+      }, {
+        "name" : "getIsAddable",
+        "eType" : {
+          "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+          "$ref" : "http://www.eclipse.org/emf/2003/XMLType#//Boolean"
+        }
+      }, {
+        "name" : "getIsRemovable",
+        "eType" : {
+          "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+          "$ref" : "http://www.eclipse.org/emf/2003/XMLType#//Boolean"
+        }
+      }, {
+        "name" : "getIsRangeable",
+        "eType" : {
+          "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+          "$ref" : "http://www.eclipse.org/emf/2003/XMLType#//Boolean"
+        }
+      }, {
+        "name" : "getIsCreateValidatable",
+        "eType" : {
+          "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+          "$ref" : "http://www.eclipse.org/emf/2003/XMLType#//Boolean"
+        }
+      }, {
+        "name" : "getIsRefreshable",
+        "eType" : {
+          "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+          "$ref" : "http://www.eclipse.org/emf/2003/XMLType#//Boolean"
+        }
+      }, {
+        "name" : "getIsUpdatable",
+        "eType" : {
+          "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+          "$ref" : "http://www.eclipse.org/emf/2003/XMLType#//Boolean"
+        }
+      }, {
+        "name" : "getIsUpdateValidatable",
+        "eType" : {
+          "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+          "$ref" : "http://www.eclipse.org/emf/2003/XMLType#//Boolean"
+        }
+      }, {
+        "name" : "getIsDeletable",
+        "eType" : {
+          "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+          "$ref" : "http://www.eclipse.org/emf/2003/XMLType#//Boolean"
+        }
+      }, {
+        "name" : "getIsTemplateable",
+        "eType" : {
+          "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+          "$ref" : "http://www.eclipse.org/emf/2003/XMLType#//Boolean"
+        }
+      } ],
+      "eStructuralFeatures" : [ {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EAttribute",
+        "name" : "isCollection",
+        "lowerBound" : 1,
+        "eType" : {
+          "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+          "$ref" : "http://www.eclipse.org/emf/2003/XMLType#//Boolean"
+        },
+        "defaultValueLiteral" : "true"
+      }, {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EReference",
+        "name" : "target",
+        "lowerBound" : 1,
+        "eType" : {
+          "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+          "$ref" : "//data/ClassType"
+        }
+      }, {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EAttribute",
+        "name" : "isOptional",
+        "lowerBound" : 1,
+        "eType" : {
+          "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+          "$ref" : "http://www.eclipse.org/emf/2003/XMLType#//Boolean"
+        },
+        "defaultValueLiteral" : "true"
+      }, {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EAttribute",
+        "name" : "isOrderable",
+        "lowerBound" : 1,
+        "eType" : {
+          "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+          "$ref" : "http://www.eclipse.org/emf/2003/XMLType#//Boolean"
+        },
+        "defaultValueLiteral" : "false"
+      }, {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EAttribute",
+        "name" : "isFilterable",
+        "lowerBound" : 1,
+        "eType" : {
+          "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+          "$ref" : "http://www.eclipse.org/emf/2003/XMLType#//Boolean"
+        }
+      } ]
+    }, {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+      "name" : "BinaryType",
+      "eSuperTypes" : [ {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+        "$ref" : "//data/DataType"
+      } ],
+      "eStructuralFeatures" : [ {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EReference",
+        "name" : "mimeTypes",
+        "lowerBound" : 1,
+        "upperBound" : -1,
+        "eType" : {
+          "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+          "$ref" : "//data/MimeType"
+        }
+      }, {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EAttribute",
+        "name" : "maxFileSize",
+        "lowerBound" : 1,
+        "eType" : {
+          "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+          "$ref" : "http://www.eclipse.org/emf/2003/XMLType#//Long"
+        },
+        "defaultValueLiteral" : "0"
+      } ]
+    }, {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+      "name" : "MimeType",
+      "eStructuralFeatures" : [ {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EAttribute",
+        "name" : "type",
+        "lowerBound" : 1,
+        "eType" : {
+          "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+          "$ref" : "http://www.eclipse.org/emf/2003/XMLType#//String"
+        }
+      }, {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EAttribute",
+        "name" : "subType",
+        "lowerBound" : 1,
+        "eType" : {
+          "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+          "$ref" : "http://www.eclipse.org/emf/2003/XMLType#//String"
+        }
+      } ]
+    }, {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EEnum",
+      "name" : "OperationTargetBehaviourType",
+      "eLiterals" : [ {
+        "name" : "REFRESH"
+      }, {
+        "name" : "UPDATE",
+        "value" : 1
+      }, {
+        "name" : "DELETE",
+        "value" : 2
+      } ]
+    }, {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+      "name" : "TimeType",
+      "eSuperTypes" : [ {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+        "$ref" : "//data/DataType"
+      } ]
+    } ]
+  } ]
+}

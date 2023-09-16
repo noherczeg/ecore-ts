@@ -3,17 +3,11 @@ import { EFactory } from './EFactory';
 import { EClassifier } from './EClassifier';
 
 export interface EPackage extends ENamedElement {
-  nsURI: string;
-  nsPrefix: string;
-  eSubPackages: EPackage[];
-  eSuperPackage: EPackage;
-  eFactoryInstance: EFactory;
-  eClassifiers: EClassifier[];
-  getEClassifier(name: string): EClassifier;
+  getEClassifier(name: string): EClassifier | undefined;
   getEClassifiers(): EClassifier[];
   getEFactoryInstance(): EFactory;
   getESubpackages(): EPackage[];
-  getESuperPackage(): EPackage;
+  getESuperPackage(): EPackage | undefined;
   getNsPrefix(): string;
   getNsURI(): string;
   setEFactoryInstance(value: EFactory): void;
