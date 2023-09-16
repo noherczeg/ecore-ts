@@ -3,11 +3,6 @@ import { EPackage } from './EPackage';
 import { ETypeParameter } from './ETypeParameter';
 
 export interface EClassifier extends ENamedElement {
-  instanceClassName: string;
-  instanceClass: any;
-  defaultValue: object;
-  ePackage: EPackage;
-  eTypeParameters: ETypeParameter[];
   isInstanceObject(object: object): boolean;
   getClassifierID(): number;
   getDefaultValue(): any;

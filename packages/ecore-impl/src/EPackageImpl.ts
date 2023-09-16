@@ -6,19 +6,22 @@ export class EPackageImpl extends ENamedElementImpl implements EPackage {
   public static readonly E_CLASS = 'http://www.eclipse.org/emf/2002/Ecore#//EPackage';
 
   private readonly eClassifiers: EClassifier[] = [];
-  private eFactoryInstance: EFactory;
   private readonly eSubPackages: EPackage[] = [];
-  private readonly eSuperPackage: EPackage;
+  private readonly eSuperPackage?: EPackage;
   private nsPrefix: string;
   private nsURI: string;
 
   constructor(loader: Loader, parent: any, obj: any) {
-    super(loader, obj.name);
+    super(loader, parent, obj);
     this.nsURI = obj.nsURI;
     this.nsPrefix = obj.nsPrefix;
 
     if (parent && EPackageImpl.isObjectEPackage(parent)) {
       this.eSuperPackage = parent;
+    }
+
+    if (Array.isArray(obj.eClassifiers)) {
+      loader.processClassifiers(obj.eClassifiers, this);
     }
   }
 
@@ -34,7 +37,7 @@ export class EPackageImpl extends ENamedElementImpl implements EPackage {
     return [...this.eClassifiers];
   }
 
-  getEFactoryInstance(): EFactory {
+  getEFactoryInstance(): EFactory | undefined {
     return undefined;
   }
 

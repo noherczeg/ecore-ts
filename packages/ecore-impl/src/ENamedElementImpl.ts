@@ -3,16 +3,18 @@ import { EModelElementImpl } from './EModelElementImpl';
 import { Loader } from './loader';
 
 export class ENamedElementImpl extends EModelElementImpl implements ENamedElement {
-  name: string;
+  protected name: string;
 
-  constructor(loader: Loader, name: string) {
+  constructor(loader: Loader, parent: any, obj: any) {
     super(loader);
-    this.name = name;
+    this.name = obj.name;
   }
 
   getName(): string {
-    return '';
+    return this.name;
   }
 
-  setName(value: string): void {}
+  setName(value: string): void {
+    this.name = value;
+  }
 }

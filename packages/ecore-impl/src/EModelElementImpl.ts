@@ -2,11 +2,13 @@ import { EAnnotation, EModelElement } from '@ecore-ts/ecore-api';
 import { EObjectImpl } from './EObjectImpl';
 
 export class EModelElementImpl extends EObjectImpl implements EModelElement {
-  getEAnnotation(source: string): EAnnotation {
+  protected eAnnotations: EAnnotation[] = [];
+
+  getEAnnotation(source: string): EAnnotation | undefined {
     return undefined;
   }
 
   getEAnnotations(): EAnnotation[] {
-    return [];
+    return this.eAnnotations;
   }
 }

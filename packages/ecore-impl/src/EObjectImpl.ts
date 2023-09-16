@@ -1,4 +1,4 @@
-import { EClass, EObject, EOperation, EReference, EStructuralFeature } from '@ecore-ts/ecore-api';
+import { EObject, EReference, EStructuralFeature } from '@ecore-ts/ecore-api';
 import { Loader } from './loader';
 
 export class EObjectImpl implements EObject {
@@ -12,19 +12,15 @@ export class EObjectImpl implements EObject {
     return [];
   }
 
-  eClass(): EClass {
+  eContainer(): EObject | undefined {
     return undefined;
   }
 
-  eContainer(): EObject {
+  eContainingFeature(): EStructuralFeature | undefined {
     return undefined;
   }
 
-  eContainingFeature(): EStructuralFeature {
-    return undefined;
-  }
-
-  eContainmentFeature(): EReference {
+  eContainmentFeature(): EReference | undefined {
     return undefined;
   }
 
@@ -35,24 +31,4 @@ export class EObjectImpl implements EObject {
   eCrossReferences(): EObject[] {
     return [];
   }
-
-  eGet(feature: EStructuralFeature): any;
-  eGet(feature: EStructuralFeature, resolve: boolean): any;
-  eGet(feature: EStructuralFeature, resolve?: boolean): any {}
-
-  eInvoke(operation: EOperation, args: any[]): any {}
-
-  eIsProxy(): boolean {
-    return false;
-  }
-
-  eIsSet(feature: EStructuralFeature): boolean {
-    return false;
-  }
-
-  eResource(): any {}
-
-  eSet(feature: EStructuralFeature, newValue: any): void {}
-
-  eUnset(feature: EStructuralFeature): void {}
 }

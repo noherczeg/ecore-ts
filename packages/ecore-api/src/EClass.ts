@@ -6,8 +6,6 @@ import { EAttribute } from './EAttribute';
 import { EGenericType } from './EGenericType';
 
 export interface EClass extends EClassifier {
-  abstract: boolean;
-  interface: boolean;
   getEAllOperations(): EOperation[];
   getEOperations(): EOperation[];
   getEOperation(operationID: number): EOperation | undefined;
@@ -26,14 +24,14 @@ export interface EClass extends EClassifier {
   getEAllGenericSuperTypes(): EGenericType[];
   getEGenericSuperTypes(): EGenericType[];
   isSuperTypeOf(someClass: EClass): boolean;
-  getEStructuralFeature(featureID: number): EStructuralFeature;
-  getEStructuralFeature(featureName: string): EStructuralFeature;
+  getEStructuralFeature(featureID: number): EStructuralFeature | undefined;
+  getEStructuralFeature(featureName: string): EStructuralFeature | undefined;
   getFeatureCount(): number;
   getFeatureID(feature: EStructuralFeature): number;
-  getFeatureType(feature: EStructuralFeature): EGenericType;
+  getFeatureType(feature: EStructuralFeature): EGenericType | undefined;
   getOperationCount(): number;
   getOperationID(operation: EOperation): number;
-  getOverride(operation: EOperation): EOperation;
+  getOverride(operation: EOperation): EOperation | undefined;
   isAbstract(): boolean;
   isInterface(): boolean;
   isSuperTypeOf(someClass: EClass): boolean;
