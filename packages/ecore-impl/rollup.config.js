@@ -20,7 +20,6 @@ export default [
         include: /\.[jt]sx?$/,
         exclude: /node_modules/,
         sourceMap: true,
-        target: 'es2017',
         tsconfig: 'tsconfig.json',
       }),
     ],

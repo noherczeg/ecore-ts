@@ -14,7 +14,5 @@ export class ENamedElementImpl extends EModelElementImpl implements ENamedElemen
     return '';
   }
 
-  setName(value: string): void {
-  }
-
+  setName(value: string): void {}
 }

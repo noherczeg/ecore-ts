@@ -1,16 +1,19 @@
 {
-  "extends": "./tsconfig.base.json",
-  "include": [
-    "./rollup.config.js"
-  ],
+  "compilerOptions": {
+    "target": "ESNext",
+    "module": "ESNext",
+    "moduleResolution": "node",
+    "strict": true,
+    "declaration": true,
+    "noImplicitOverride": true,
+    "noUnusedLocals": true,
+    "esModuleInterop": true,
+    "useUnknownInCatchVariables": false,
+    "resolveJsonModule": true
+  },
   "exclude": [
     "./test/",
     "./node_modules/",
     "./dist/"
-  ],
-  "compilerOptions": {
-    "esModuleInterop": true,
-    "declaration": false,
-    "resolveJsonModule": true
-  }
+  ]
 }

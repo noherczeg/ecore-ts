@@ -8,6 +8,8 @@
     "node": ">=18.0.0"
   },
   "scripts": {
+    "build": "pnpm --stream -r --if-present build",
+    "test": "pnpm --stream -r --if-present test",
     "format": "prettier --config .prettierrc \"packages/*/src/**/*.{js,ts,tsx}\" --write"
   },
   "repository": {

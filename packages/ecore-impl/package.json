@@ -16,7 +16,8 @@
   },
   "scripts": {
     "build": "rollup -c",
-    "test": "vitest"
+    "test": "vitest run",
+    "test:dev": "vitest watch"
   },
   "keywords": [],
   "author": "bert Csaba Herczeg<noherczeg@gmail.com>",

@@ -54,8 +54,7 @@ export class EPackageImpl extends ENamedElementImpl implements EPackage {
     return this.nsURI;
   }
 
-  setEFactoryInstance(value: EFactory): void {
-  }
+  setEFactoryInstance(value: EFactory): void {}
 
   setNsPrefix(value: string): void {
     this.nsPrefix = value;

@@ -9,5 +9,4 @@ export class EModelElementImpl extends EObjectImpl implements EModelElement {
   getEAnnotations(): EAnnotation[] {
     return [];
   }
-
 }

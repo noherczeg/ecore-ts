@@ -38,11 +38,9 @@ export class EObjectImpl implements EObject {
 
   eGet(feature: EStructuralFeature): any;
   eGet(feature: EStructuralFeature, resolve: boolean): any;
-  eGet(feature: EStructuralFeature, resolve?: boolean): any {
-  }
+  eGet(feature: EStructuralFeature, resolve?: boolean): any {}
 
-  eInvoke(operation: EOperation, args: any[]): any {
-  }
+  eInvoke(operation: EOperation, args: any[]): any {}
 
   eIsProxy(): boolean {
     return false;
@@ -52,13 +50,9 @@ export class EObjectImpl implements EObject {
     return false;
   }
 
-  eResource(): any {
-  }
+  eResource(): any {}
 
-  eSet(feature: EStructuralFeature, newValue: any): void {
-  }
+  eSet(feature: EStructuralFeature, newValue: any): void {}
 
-  eUnset(feature: EStructuralFeature): void {
-  }
-
+  eUnset(feature: EStructuralFeature): void {}
 }
