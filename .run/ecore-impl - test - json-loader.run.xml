@@ -1,0 +1,15 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="ecore-impl - test - json-loader" type="JavaScriptTestRunnerVitest">
+    <node-interpreter value="project" />
+    <vitest-package value="$PROJECT_DIR$/packages/ecore-impl/node_modules/vitest" />
+    <working-dir value="$PROJECT_DIR$/packages/ecore-impl" />
+    <vitest-options value="--run" />
+    <envs />
+    <scope-kind value="SUITE" />
+    <test-file value="$PROJECT_DIR$/packages/ecore-impl/test/json-loader.spec.ts" />
+    <test-names>
+      <test-name value="json-loader" />
+    </test-names>
+    <method v="2" />
+  </configuration>
+</component>
