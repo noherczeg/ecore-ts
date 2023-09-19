@@ -6,7 +6,7 @@
     <vitest-options value="--run" />
     <envs />
     <scope-kind value="SUITE" />
-    <test-file value="$PROJECT_DIR$/packages/ecore-impl/test/json-loader.spec.ts" />
+    <test-file value="$PROJECT_DIR$/packages/ecore-impl/test/JsonLoader.spec.ts" />
     <test-names>
       <test-name value="json-loader" />
     </test-names>

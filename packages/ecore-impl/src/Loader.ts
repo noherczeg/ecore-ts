@@ -9,7 +9,7 @@ export interface Loader {
   getEClasses(): EClass[];
   getEEnums(): EEnum[];
   getEEnumLiterals(): EEnumLiteral[];
-  processModel(obj: any, parent?: any, hint?: HINT): EPackage[];
-  processClassifiers(classifiers: object[], parent?: EPackage, hint?: HINT): EClassifier[];
-  processEEnumLiterals(eEnumLiterals: object[], parent?: EEnum, hint?: HINT): EEnumLiteral[];
+  processModel(obj: any, parent?: EPackage, hint?: HINT): EPackage[];
+  processClassifiers(classifiers: any[], parent: EPackage, hint?: HINT): EClassifier[];
+  processEEnumLiterals(eEnumLiterals: any[], parent: EEnum, hint?: HINT): EEnumLiteral[];
 }

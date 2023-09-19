@@ -1,14 +1,14 @@
 import { EEnum, EEnumLiteral } from '@ecore-ts/ecore-api';
 import { ENamedElementImpl } from './ENamedElementImpl';
-import { Loader } from './loader';
+import { Loader } from './Loader';
 
 export class EEnumLiteralImpl extends ENamedElementImpl implements EEnumLiteral {
   protected eEnum: EEnum;
   protected literal: string;
   protected value: number;
 
-  constructor(loader: Loader, parent: any, obj: any) {
-    super(loader, parent, obj);
+  constructor(loader: Loader, parent: any, obj: any, ref: string) {
+    super(loader, parent, obj, ref);
     this.eEnum = parent;
     this.literal = obj.name;
     this.value = obj.value || 0;

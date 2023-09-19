@@ -1,11 +1,18 @@
 import { EObject, EReference, EStructuralFeature } from '@ecore-ts/ecore-api';
-import { Loader } from './loader';
+import { Loader } from './Loader';
+import { LoaderExtras } from './LoaderExtras';
 
-export class EObjectImpl implements EObject {
-  protected loader: Loader;
+export class EObjectImpl implements EObject, LoaderExtras {
+  protected $loader: Loader;
+  protected $raw: any;
+  protected $parent: any;
+  protected $ref: string;
 
-  constructor(loader: Loader) {
-    this.loader = loader;
+  constructor(loader: Loader, parent: any, rawObj: any, ref: string) {
+    this.$loader = loader;
+    this.$parent = parent;
+    this.$raw = rawObj;
+    this.$ref = ref;
   }
 
   eAllContents(): EObject[] {
@@ -30,5 +37,13 @@ export class EObjectImpl implements EObject {
 
   eCrossReferences(): EObject[] {
     return [];
+  }
+
+  get$raw(): any {
+    return this.$raw;
+  }
+
+  get$Ref(): string {
+    return this.$ref;
   }
 }

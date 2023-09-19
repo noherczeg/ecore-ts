@@ -1,13 +1,13 @@
 import { EEnum, EEnumLiteral } from '@ecore-ts/ecore-api';
 import { EDataTypeImpl } from './EDataTypeImpl';
-import { Loader } from './loader';
+import { Loader } from './Loader';
 
 export class EEnumImpl extends EDataTypeImpl implements EEnum {
   public static readonly E_CLASS = 'http://www.eclipse.org/emf/2002/Ecore#//EEnum';
   protected eLiterals: EEnumLiteral[] = [];
 
-  constructor(loader: Loader, parent: any, obj: any) {
-    super(loader, parent, obj);
+  constructor(loader: Loader, parent: any, obj: any, ref: string) {
+    super(loader, parent, obj, ref);
 
     if (Array.isArray(obj.eLiterals)) {
       this.eLiterals = loader.processEEnumLiterals(obj.eLiterals, this);

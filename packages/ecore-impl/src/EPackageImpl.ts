@@ -1,6 +1,6 @@
 import { EClassifier, EFactory, EPackage } from '@ecore-ts/ecore-api';
 import { ENamedElementImpl } from './ENamedElementImpl';
-import { Loader } from './loader';
+import { Loader } from './Loader';
 
 export class EPackageImpl extends ENamedElementImpl implements EPackage {
   public static readonly E_CLASS = 'http://www.eclipse.org/emf/2002/Ecore#//EPackage';
@@ -11,8 +11,8 @@ export class EPackageImpl extends ENamedElementImpl implements EPackage {
   private nsPrefix: string;
   private nsURI: string;
 
-  constructor(loader: Loader, parent: any, obj: any) {
-    super(loader, parent, obj);
+  constructor(loader: Loader, parent: any, obj: any, ref: string) {
+    super(loader, parent, obj, ref);
     this.nsURI = obj.nsURI;
     this.nsPrefix = obj.nsPrefix;
 

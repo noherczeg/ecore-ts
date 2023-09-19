@@ -1,6 +1,6 @@
 import { EClassifier, EPackage, ETypeParameter } from '@ecore-ts/ecore-api';
 import { ENamedElementImpl } from './ENamedElementImpl';
-import { Loader } from './loader';
+import { Loader } from './Loader';
 
 export class EClassifierImpl extends ENamedElementImpl implements EClassifier {
   protected defaultValue = null;
@@ -9,8 +9,8 @@ export class EClassifierImpl extends ENamedElementImpl implements EClassifier {
   protected instanceClass: any;
   protected instanceClassName: string;
 
-  constructor(loader: Loader, parent: any, obj: any) {
-    super(loader, parent, obj);
+  constructor(loader: Loader, parent: any, obj: any, ref: string) {
+    super(loader, parent, obj, ref);
     this.ePackage = parent as EPackage;
     this.instanceClassName = obj.name;
   }

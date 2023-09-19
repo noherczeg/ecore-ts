@@ -1,6 +1,6 @@
 import { EAttribute, EClass, EGenericType, EOperation, EReference, EStructuralFeature } from '@ecore-ts/ecore-api';
 import { EClassifierImpl } from './EClassifierImpl';
-import { Loader } from './loader';
+import { Loader } from './Loader';
 
 export class EClassImpl extends EClassifierImpl implements EClass {
   public static readonly E_CLASS = 'http://www.eclipse.org/emf/2002/Ecore#//EClass';
@@ -10,8 +10,8 @@ export class EClassImpl extends EClassifierImpl implements EClass {
   protected eSuperTypes: EClass[] = [];
   protected eAttributes: EAttribute[] = [];
 
-  constructor(loader: Loader, parent: any, obj: any) {
-    super(loader, parent, obj);
+  constructor(loader: Loader, parent: any, obj: any, ref: string) {
+    super(loader, parent, obj, ref);
     this.abstract = obj.abstract;
     this.interface = obj.interface;
   }
@@ -45,7 +45,7 @@ export class EClassImpl extends EClassifierImpl implements EClass {
   }
 
   getEAllSuperTypes(): EClass[] {
-    return this.eSuperTypes;
+    return [...this.eSuperTypes, ...this.eSuperTypes.reduce((a, s) => a.concat(s.getEAllSuperTypes()), [] as EClass[])];
   }
 
   getEAttributes(): EAttribute[] {
@@ -89,6 +89,11 @@ export class EClassImpl extends EClassifierImpl implements EClass {
   }
 
   getESuperTypes(): EClass[] {
+    return this.eSuperTypes;
+  }
+
+  getESuperTypesDirect(): EClass[] {
+    // always return direct reference, not a shallow copy!
     return this.eSuperTypes;
   }
 
