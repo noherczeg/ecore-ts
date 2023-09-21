@@ -3,6 +3,8 @@ import { resolve } from 'node:path';
 import { expect, describe, it } from 'vitest'
 import { Loader } from '../src/loader';
 import { JsonLoader } from '../src/JsonLoader';
+import {EAttributeImpl} from "../src/EAttributeImpl";
+import {EClassImpl} from "../src/EClassImpl";
 
 describe('json-loader', () => {
   const jsonString = readFileSync(resolve('test/model/ui.json')).toString();
@@ -13,9 +15,10 @@ describe('json-loader', () => {
   const eClasses = loader.getEClasses();
   const eEnums = loader.getEEnums();
   const eEnumLiterals = loader.getEEnumLiterals();
+  const eAttributes = loader.getEAttributes();
 
   it('eObjects', () => {
-    expect(eObjects.length).toBe(218);
+    expect(eObjects.length).toBe(357);
   });
 
   it('ePackages', () => {
@@ -23,7 +26,7 @@ describe('json-loader', () => {
   });
 
   it('eClassifiers', () => {
-    expect(eClassifiers.length).toBe(114);
+    expect(eClassifiers.length).toBe(139);
   });
 
   describe('eClasses', () => {
@@ -62,5 +65,19 @@ describe('json-loader', () => {
 
   it('eEnumLiterals', () => {
     expect(eEnumLiterals.length).toBe(102);
+  });
+
+  it('eAttributes', () => {
+    expect(eAttributes.length).toBe(114);
+
+    const name = eAttributes.find(a => (a as EAttributeImpl).get$Ref() === '//name') as EAttributeImpl;
+
+    expect(name.getName()).toBe('name');
+    expect(name.getLowerBound()).toBe(1);
+    expect(name.getUpperBound()).toBe(1);
+
+    const parent: EClassImpl = name.get$Parent() as EClassImpl;
+    expect(parent.getName()).toBe('NamedElement');
+    expect(parent.get$Ref()).toBe('//NamedElement');
   });
 })

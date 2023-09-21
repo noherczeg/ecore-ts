@@ -1,23 +1,44 @@
-import { EClass, EClassifier, EEnum, EEnumLiteral, EObject, EPackage } from '@ecore-ts/ecore-api';
+import {
+  EAttribute,
+  EClass,
+  EClassifier,
+  EDataType,
+  EEnum,
+  EEnumLiteral,
+  EObject,
+  EPackage,
+  EStructuralFeature,
+  ETypedElement,
+} from '@ecore-ts/ecore-api';
 import { HINT, Loader } from './Loader';
 import { EPackageImpl } from './EPackageImpl';
 import { EClassImpl } from './EClassImpl';
 import { EEnumImpl } from './EEnumImpl';
 import { EEnumLiteralImpl } from './EEnumLiteralImpl';
 import { LoaderExtras } from './LoaderExtras';
+import { EAttributeImpl } from './EAttributeImpl';
+import { AbstractLoader } from './AbstractLoader';
 
-export class JsonLoader implements Loader {
-  private refMap: Map<string, any> = new Map<string, any>();
+export class JsonLoader extends AbstractLoader implements Loader {
   private eObjects: EObject[] = [];
   private ePackages: EPackage[] = [];
   private eClassifiers: EClassifier[] = [];
+  private eDataTypes: EDataType[] = [];
   private eClasses: EClass[] = [];
   private eEnums: EEnum[] = [];
   private eEnumLiterals: EEnumLiteral[] = [];
+  private eStructuralFeatures: EStructuralFeature[] = [];
+  private eTypedElements: ETypedElement[] = [];
+  private eAttributes: EAttribute[] = [];
 
   constructor(model: string) {
+    super();
     const parsed = JSON.parse(model);
     const safe = Array.isArray(parsed) ? parsed : [parsed];
+    const eDataTypes = this.generateECorePrimitiveDataTypes(this);
+    this.eObjects.push(...eDataTypes);
+    this.eClassifiers.push(...eDataTypes);
+    this.eDataTypes.push(...eDataTypes);
     this.processModel(safe);
     this.processRefs();
   }
@@ -117,6 +138,23 @@ export class JsonLoader implements Loader {
     return literals;
   }
 
+  processStructuralFeatures(structuralFeatures: any[], parent: EClass, hint?: HINT): EStructuralFeature[] {
+    const eStructuralFeatures: EStructuralFeature[] = [];
+    for (const structuralFeature of structuralFeatures) {
+      const refVal = this.concatRef(parent.getEPackage() as EPackageImpl, structuralFeature.name);
+      if (EAttributeImpl.isObjectEAttribute(structuralFeature)) {
+        const eAttribute = new EAttributeImpl(this, parent, structuralFeature, refVal);
+        this.eObjects.push(eAttribute);
+        this.eTypedElements.push(eAttribute);
+        this.eStructuralFeatures.push(eAttribute);
+        this.eAttributes.push(eAttribute);
+        this.refMap.set(refVal, eAttribute);
+        eStructuralFeatures.push(eAttribute);
+      }
+    }
+    return eStructuralFeatures;
+  }
+
   getEObjects(): EObject[] {
     return this.eObjects;
   }
@@ -133,11 +171,27 @@ export class JsonLoader implements Loader {
     return this.eClassifiers;
   }
 
+  getEDataTypes(): EDataType[] {
+    return this.eDataTypes;
+  }
+
   getEEnums(): EEnum[] {
     return this.eEnums;
   }
 
   getEEnumLiterals(): EEnumLiteral[] {
     return this.eEnumLiterals;
+  }
+
+  getETypedElements(): ETypedElement[] {
+    return this.eTypedElements;
+  }
+
+  getEStructuralFeatures(): EStructuralFeature[] {
+    return this.eStructuralFeatures;
+  }
+
+  getEAttributes(): EAttribute[] {
+    return this.eAttributes;
   }
 }

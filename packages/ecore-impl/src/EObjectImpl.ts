@@ -46,4 +46,8 @@ export class EObjectImpl implements EObject, LoaderExtras {
   get$Ref(): string {
     return this.$ref;
   }
+
+  get$Parent(): EObject {
+    return this.$parent;
+  }
 }

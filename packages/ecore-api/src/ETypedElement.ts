@@ -3,16 +3,8 @@ import { EClassifier } from './EClassifier';
 import { EGenericType } from './EGenericType';
 
 export interface ETypedElement extends ENamedElement {
-  ordered: boolean;
-  unique: boolean;
-  lowerBound: number;
-  upperBound: number;
-  many: boolean;
-  required: boolean;
-  eType?: EClassifier;
-  eGenericType?: EGenericType;
-  getEGenericType(): EGenericType;
-  getEType(): EClassifier;
+  getEGenericType(): EGenericType | undefined;
+  getEType(): EClassifier | undefined;
   getLowerBound(): number;
   getUpperBound(): number;
   isMany(): boolean;

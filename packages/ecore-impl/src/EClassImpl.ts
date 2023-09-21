@@ -14,6 +14,10 @@ export class EClassImpl extends EClassifierImpl implements EClass {
     super(loader, parent, obj, ref);
     this.abstract = obj.abstract;
     this.interface = obj.interface;
+
+    if (Array.isArray(obj.eStructuralFeatures)) {
+      loader.processStructuralFeatures(obj.eStructuralFeatures, this);
+    }
   }
 
   public static isObjectEClass(obj: any): boolean {
