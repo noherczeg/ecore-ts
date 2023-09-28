@@ -3,8 +3,6 @@ import { EClassifierImpl } from './EClassifierImpl';
 import { Loader } from './Loader';
 
 export class EClassImpl extends EClassifierImpl implements EClass {
-  public static readonly E_CLASS = 'http://www.eclipse.org/emf/2002/Ecore#//EClass';
-
   protected abstract: boolean;
   protected interface: boolean;
   protected eSuperTypes: EClass[] = [];
@@ -21,7 +19,7 @@ export class EClassImpl extends EClassifierImpl implements EClass {
   }
 
   public static isObjectEClass(obj: any): boolean {
-    return obj?.eClass && obj.eClass === EClassImpl.E_CLASS;
+    return obj?.eClass && obj.eClass === 'http://www.eclipse.org/emf/2002/Ecore#//EClass';
   }
 
   getEAllAttributes(): EAttribute[] {

@@ -3,7 +3,6 @@ import { EDataTypeImpl } from './EDataTypeImpl';
 import { Loader } from './Loader';
 
 export class EEnumImpl extends EDataTypeImpl implements EEnum {
-  public static readonly E_CLASS = 'http://www.eclipse.org/emf/2002/Ecore#//EEnum';
   protected eLiterals: EEnumLiteral[] = [];
 
   constructor(loader: Loader, parent: any, obj: any, ref: string) {
@@ -14,8 +13,8 @@ export class EEnumImpl extends EDataTypeImpl implements EEnum {
     }
   }
 
-  public static isObjectEClass(obj: any): boolean {
-    return obj?.eClass && obj.eClass === EEnumImpl.E_CLASS;
+  public static isObjectEEnum(obj: any): boolean {
+    return obj?.eClass && obj.eClass === 'http://www.eclipse.org/emf/2002/Ecore#//EEnum';
   }
 
   getEEnumLiteral(name: string): EEnumLiteral | undefined;

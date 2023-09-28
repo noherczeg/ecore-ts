@@ -3,8 +3,6 @@ import { ENamedElementImpl } from './ENamedElementImpl';
 import { Loader } from './Loader';
 
 export class EPackageImpl extends ENamedElementImpl implements EPackage {
-  public static readonly E_CLASS = 'http://www.eclipse.org/emf/2002/Ecore#//EPackage';
-
   private readonly eClassifiers: EClassifier[] = [];
   private readonly eSubPackages: EPackage[] = [];
   private readonly eSuperPackage?: EPackage;
@@ -26,7 +24,7 @@ export class EPackageImpl extends ENamedElementImpl implements EPackage {
   }
 
   public static isObjectEPackage(obj: any): boolean {
-    return obj?.eClass && obj.eClass === EPackageImpl.E_CLASS;
+    return obj?.eClass && obj.eClass === 'http://www.eclipse.org/emf/2002/Ecore#//EPackage';
   }
 
   getEClassifier(name: string): EClassifier | undefined {

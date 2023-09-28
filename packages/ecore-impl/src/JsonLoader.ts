@@ -113,7 +113,7 @@ export class JsonLoader extends AbstractLoader implements Loader {
         this.eClasses.push(eClass);
         this.refMap.set(refVal, eClass);
         eClassifiers.push(eClass);
-      } else if (EEnumImpl.isObjectEClass(classifier)) {
+      } else if (EEnumImpl.isObjectEEnum(classifier)) {
         const eEnum = new EEnumImpl(this, parent, classifier, refVal);
         this.eObjects.push(eEnum);
         this.eClassifiers.push(eEnum);

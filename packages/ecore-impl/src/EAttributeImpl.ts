@@ -4,8 +4,6 @@ import { Loader } from './Loader';
 import { EDataTypeImpl } from './EDataTypeImpl';
 
 export class EAttributeImpl extends EStructuralFeatureImpl implements EAttribute {
-  public static readonly E_CLASS = 'http://www.eclipse.org/emf/2002/Ecore#//EAttribute';
-
   protected id: boolean;
   protected eAttributeType: EDataType;
 
@@ -13,12 +11,12 @@ export class EAttributeImpl extends EStructuralFeatureImpl implements EAttribute
     super(loader, parent, obj, ref);
     this.id = obj.id !== undefined ? obj.id : false;
     this.eAttributeType =
-      (loader.getEDataTypes() as EDataTypeImpl[]).find((d) => d.get$Ref() === obj.$ref) ||
+      (loader.getEDataTypes() as EDataTypeImpl[]).find((d) => d.get$Ref() === obj?.eType?.$ref) ||
       (null as unknown as EDataType); // should never happen...
   }
 
   public static isObjectEAttribute(obj: any): boolean {
-    return obj?.eClass && obj.eClass === EAttributeImpl.E_CLASS;
+    return obj?.eClass && obj.eClass === 'http://www.eclipse.org/emf/2002/Ecore#//EAttribute';
   }
 
   getEAttributeType(): EDataType {

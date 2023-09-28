@@ -18,7 +18,7 @@ describe('json-loader', () => {
   const eAttributes = loader.getEAttributes();
 
   it('eObjects', () => {
-    expect(eObjects.length).toBe(357);
+    expect(eObjects.length).toBe(363);
   });
 
   it('ePackages', () => {
@@ -26,7 +26,7 @@ describe('json-loader', () => {
   });
 
   it('eClassifiers', () => {
-    expect(eClassifiers.length).toBe(139);
+    expect(eClassifiers.length).toBe(145);
   });
 
   describe('eClasses', () => {
